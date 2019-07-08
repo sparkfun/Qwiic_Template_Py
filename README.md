@@ -89,3 +89,10 @@ Qwiic_Package_Py
            +---  ... Any other file, directory or resource that makes up the package
 ```
 
+The LICENSE File
+----------------
+The file named LICENSE contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
+
+For example, in GitHub, when the contents of the file is viewed, the system will display details about the license and clearly indicate to the user what the license covers. 
+
+The SparkFun qwiic python module implementations fall under the MIT license. 
