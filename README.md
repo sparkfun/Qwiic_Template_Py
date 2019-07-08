@@ -15,7 +15,7 @@ Additionally, the use of ReadTheDocs and PyPi are outlined.
 For details and example use of the described structure, please review the existing pythong projects for the qwiic system. 
 Examples Include:
 * [Qwiic_CCS811_Py - An example of a repository for a single file, python module](https://github.com/sparkfun/Qwiic_CCS811_Py)
-* [Qwiic_Micro_OLED_P - An example of a pythong package, that includes resource files](https://github.com/sparkfun/Qwiic_Micro_OLED_Py)
+* [Qwiic_Micro_OLED_Py - An example of a pythong package, that includes resource files](https://github.com/sparkfun/Qwiic_Micro_OLED_Py)
 * [Qwiic_Py - the overall package for the qwiic python system](https://github.com/sparkfun/Qwiic_Py)
 
 
