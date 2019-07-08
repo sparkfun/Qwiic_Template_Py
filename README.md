@@ -53,6 +53,8 @@ Implementation
 --------------
 There are two patterns of implementation for a package - a python module or a python package. 
 
+To the end user a package or module looks the same, but the implementation within the repository is different. 
+
 ### Module
 A python module is nothing more than a single file that makes up the overall implementaiton for the package. 
 This file has the same name as the package being imported by the user. 
