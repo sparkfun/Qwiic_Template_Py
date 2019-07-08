@@ -48,3 +48,42 @@ Qwiic_Template_Py/
    
 
 ```
+
+Implementation
+--------------
+There are two patterns of implementation for a package - a python module or a python package. 
+
+### Module
+A python module is nothing more than a single file that makes up the overall implementaiton for the package. 
+This file has the same name as the package being imported by the user. 
+
+For example, if a user imports a module named qwiic_module
+```python
+import qwiic_module
+```
+The file name would be ```qwiic_module.py``` and reside in the root of the repository.
+```
+Qwiic_Module_Py/
+   +--- qwiic_module.py
+```
+
+### Package
+A python package is a folder that contains the implementation of the package. The folder can contain python source files, as well as any other resource needed for the property operation of the package.
+
+The pacakge directory is name is the name of the package. A file named ```__init__.py``` in the root directory of the package defines it's entry/operation and let's python know that the directory implements a package.
+
+For example, if the user imports a pacakge named qwiic_package
+```python
+import qwiic_package
+```
+
+The structure of this implementation would be under a directory called ```qwiic_package``` in the repository
+
+```
+Qwiic_Package_Py
+   +--- qwiic_package/
+           +--- __init__.py       - the entry point for the package implementation
+           |
+           +---  ... Any other file, directory or resource that makes up the package
+```
+
