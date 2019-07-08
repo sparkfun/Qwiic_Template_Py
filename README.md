@@ -30,7 +30,7 @@ Qwiic_Template_Py/
    |       `--- ... files to support automatic documentation creation via readthedocs.org
    |
    +--- examples/
-   |      `--- ... example files for the package
+   |       `--- ... example files for the package
    |
    +--- .readthedocs.yml  - configuration file for readthedocs
    +--- DESCRIPTION.rst   - Contains the RST formatted description for the package. Used when building the installer package
