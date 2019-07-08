@@ -91,7 +91,7 @@ Qwiic_Package_Py
 
 The LICENSE File
 ----------------
-The file named LICENSE contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
+The file named [LICENSE](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/LICENSE) contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
 
 For example, in GitHub, when the contents of the file is viewed, the system will display details about the license and clearly indicate to the user what the license covers. 
 
@@ -116,4 +116,4 @@ Qwiic_Example_Py
 The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level desription of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
 
 #### setup.cfg
-The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg)contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
+The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
