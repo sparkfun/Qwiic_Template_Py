@@ -89,3 +89,31 @@ Qwiic_Package_Py
            +---  ... Any other file, directory or resource that makes up the package
 ```
 
+The LICENSE File
+----------------
+The file named LICENSE contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
+
+For example, in GitHub, when the contents of the file is viewed, the system will display details about the license and clearly indicate to the user what the license covers. 
+
+The SparkFun qwiic python module implementations fall under the MIT license. 
+
+Installer/Package Creation
+--------------------------
+The qwiic Python components are pacakged using standard python package/install tools, and hosted within the Python Package Index (pypy.org).
+
+Within the repository, the files that makeup the package are the following:
+```
+Qwiic_Example_Py
+   + DESCRIPTION.rst          - A highlevel description of the package
+   |
+   + setup.cfg                - Specific options/settings for the package tools 
+   |
+   + setup.py                 - A python script that defines and builds the installer package
+
+```
+
+#### DESCRIPTION.rst
+This is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level desription of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
+
+#### setup.cfg
+This file contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
