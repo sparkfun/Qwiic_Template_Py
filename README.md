@@ -165,8 +165,33 @@ here = path.abspath(path.dirname(__file__))
 with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
     long_description = f.read()
 ```
-This reads the contents of the description fine and places the resultant string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the ```long_description``` keyword parameter.
+This reads the contents of the description fine and places the resultant string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the *```long_description```* keyword parameter.
 
 Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
+_setuptools.setup( install_requires=)_
+The *```isntall_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
+
+An example of this is the ```sparkfun-qwiic-i2c``` package, which all qwiic board python packages use. And example of this from the qwiic Proximity package ```setup()``` is as follows:
+```python
+setuptools.setup(
+     # ...
+     
+    install_requires=['sparkfun_qwiic_i2c'],
+
+   # ...
+   )
+```
+For the overall qwiic package, which depends on all driver packages, this parameter has the following form:
+``python
+setuptools.setup(
+     # ...
+    
+    setup_requires = ['sparkfun_qwiic_ccs811', 'sparkfun_qwiic_bme280', \
+            'sparkfun_qwiic_micro_oled', 'sparkfun_qwiic_proximity', \
+            'sparkfun_qwiic_scmd', 'sparkfun_qwiic_i2c']
+
+   # ...
+   )
+```
 
