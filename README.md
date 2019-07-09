@@ -89,7 +89,7 @@ Qwiic_Package_Py
            +---  ... Any other file, directory or resource that makes up the package
 ```
 
-Note: The souce of the implementation must be contain the [property license attribution statement](#source-code-license-attribution)
+Note: The souce of the implementation must be contain the [license attribution statement](#source-code-license-attribution)
 
 The LICENSE File
 ----------------
