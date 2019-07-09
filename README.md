@@ -170,6 +170,21 @@ This reads the contents of the description fine and places the resultant string 
 
 Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
+__setuptools.setup( name=)___
+
+This keyword is set to the name to publish the package under in PyPi.org. This is the name passed to the ```pip``` command for installing the package.
+
+The following command shows this value for the qwiic bme280:
+```python
+setuptools.setup(
+     # ...
+    name='sparkfun_qwiic_bme280',
+   # ...
+   )
+```
+
+**NOTE:** For PyPi/Pip, underscores ```_``` and dashes ```-``` are interchangeable. 
+
 ___setuptools.setup( install_requires=)___
 
 The *```install_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
@@ -287,3 +302,41 @@ setuptools.setup(
    # ...
    )
 ```
+
+Building and Uploading the Package
+----------------------------------
+
+When ready to build and upload a package to pypi.org, the following setups are performed.
+
+#### Get an Account on PyPi.org
+You'll need an account on PyPi.org - it's a simple sign up procedure.
+
+To publish a new package, you can use this account. If you are updating or modifiying an existing package, you'll need to be added as a *Maintainer* of the package by the package owner.
+
+#### Build the Package distributions
+
+To build and uplaod the pacakges, make sure the required python packages are installed - setuptools and twine. 
+```sh
+sudo pip install setuptools twine
+```
+
+Build the distribution packages using the following commands (executing in the package root directory). First create a standard distribution:
+```sh
+python setup.py sdist 
+```
+Then a distribution in the ```wheel``` format.
+```sh
+python setup.py bdist_wheel --universal
+```
+These commands will create distribution package files and place them in the ```./dist``` subdirectory. 
+
+### Upload the Package to PyPi.org
+
+The ```twine``` command is used to upload the install packages to pypi.org. To upload the pacakges, use the following command:
+
+```sh
+twine upload dist/*
+```
+This command will prompt for the *username* and *password* for the pypi account to use for the upload.
+
+Once the upload is completed, the packages are now available for use via the pip installer. 
