@@ -373,9 +373,8 @@ To create a packages documentation, the general development pattern is as follow
 * Documentation configuration is define in ```docs/conf.py```
 * Package depenancies are added to ```docs/requirements.txt```
 * The file ```index.rst``` is updated for the desired documentation structure. Addtional ```.rst``` files are added as needed.
-* For items being documented, create python [docstrings](https://www.python.org/dev/peps/pep-0257/)
 * Documentation is generated locally using Sphinx for testing
-* Valid documentation files are checked into the GitHub repository.
+* Validated documentation files are checked into the GitHub repository.
 * The GitHub repository is imported and linked to a project in ReadTheDocs.org
 * ReadThe docs generates and publishes the documentation.
     * The documentation is updated automatically when the project is updated on GitHub
