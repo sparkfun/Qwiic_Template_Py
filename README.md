@@ -235,6 +235,7 @@ setuptools.setup(
 You can see these detailed out on the SparkFun Qwiic package (sparkfun-qwiic) on the [PyPi.org repository.](https://pypi.org/project/sparkfun-qwiic/)
 
 ___setuptools.setup(packages=[])___
+
 If your repository defines one or more packages (directories), the names of these packages are provided to the ```packages``` keyboard argument to setuptools. Note: this is the directory/package name the user references in python code, not the package name used by PyPi - which can also contain additional keywords. 
 
 For the qwiic package, this is just the qwiic directory:
@@ -257,4 +258,20 @@ setuptools.setup(
    # ...
    )
 ```
-___setuptools.setup(package_data=[])___
+___setuptools.setup(package_data={})___
+
+The packaging system will include python files (```.py```) files by default. If the package includes non-python files, these are specified via the ```pacakge_data``` keyword argument, which takes a dictionary. 
+
+The provided dictionary key values are a specific location, and the value is the data files to include in the package. The data filenames can be specific names, or incldue wildcards. 
+
+An example of this is used in the qwiic_micro_oled package, which includes font data files, named using a ```.bin``` file extension. These data files are located in the ```./fonts``` subdirectory of the pacakge repository.
+```python
+setuptools.setup(
+     # ...
+     package_data={
+         "qwiic_micro_oled/fonts" : ['*.bin']
+    },
+
+   # ...
+   )
+```
