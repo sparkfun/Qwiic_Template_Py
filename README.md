@@ -149,9 +149,24 @@ The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/ma
 #### setup.cfg
 The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
 
-## setup.py
+### setup.py
 The file ```setup.py``` is a python script that is used to describe the package and build an install package. The file is used by the python package ```setuptools```, which is a collection of untilities that make it simple to build and distribute Python distributions. 
 
 This template repository contains an example ```setup.py``` file for review and an overview of the file contents are below. For details on the strucutre of the file, please review the [setup.py section](https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py) in the Packaging Python Projects document. 
+
+_Description Section_
+One of the first sections in ```setup.py``` is reading in the contents of *DESCRIPTION.rst*. 
+```python
+import io
+
+here = path.abspath(path.dirname(__file__))
+
+# get the log description
+with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
+    long_description = f.read()
+```
+This reads the contents of the description fine and places the resultant string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the ```long_description``` keyword parameter.
+
+Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
 
