@@ -275,3 +275,15 @@ setuptools.setup(
    # ...
    )
 ```
+___setuptools.setup(py_modules=[])___
+
+If the install package implements a modudule (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.
+
+For the qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
+``python
+setuptools.setup(
+     # ...
+    py_modules=["qwiic_bme280"],
+   # ...
+   )
+```
