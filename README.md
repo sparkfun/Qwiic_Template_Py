@@ -197,7 +197,7 @@ setuptools.setup(
    )
 ```
 
-___setuptools.setup(classifiers[])___
+___setuptools.setup(classifiers=[])___
 
 The classifiers argument to ```setup()``` are attrbitues that describe the package and are used details specifics to the PyPi respository and users of the project. While a [detailed list of of valid classifier values](https://pypi.org/pypi?%3Aaction=list_classifiers) is available at pypy.org, the key values are the project maturity (is it Alpha, Beta, Production?) and what python versions are supported. 
 
@@ -232,4 +232,29 @@ setuptools.setup(
    )
 ```
 
-You can see these detailed out on the SparkFun Qwiic package (sparkfun-qwiic) on the [PyPi.ori repository.](https://pypi.org/project/sparkfun-qwiic/)
+You can see these detailed out on the SparkFun Qwiic package (sparkfun-qwiic) on the [PyPi.org repository.](https://pypi.org/project/sparkfun-qwiic/)
+
+___setuptools.setup(packages=[])___
+If your repository defines one or more packages (directories), the names of these packages are provided to the ```packages``` keyboard argument to setuptools. Note: this is the directory/package name the user references in python code, not the package name used by PyPi - which can also contain additional keywords. 
+
+For the qwiic package, this is just the qwiic directory:
+```python
+setuptools.setup(
+     # ...
+     
+    packages=['qwiic'],
+
+   # ...
+   )
+```
+or for the qwiic_micro_oled package, which includes a font subpackage:
+```python
+setuptools.setup(
+     # ...
+     
+    packages=["qwiic_micro_oled", "qwiic_micro_oled/fonts"],
+
+   # ...
+   )
+```
+___setuptools.setup(package_data=[])___
