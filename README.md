@@ -231,3 +231,5 @@ setuptools.setup(
     # ...
    )
 ```
+
+You can see these detailed out on the SparkFun Qwiic package (sparkfun-qwiic) on the [PyPi.ori repository.](https://pypi.org/project/sparkfun-qwiic/)
