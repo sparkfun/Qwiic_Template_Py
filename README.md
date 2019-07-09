@@ -183,7 +183,7 @@ setuptools.setup(
    )
 ```
 For the overall qwiic package, which depends on all driver packages, this parameter has the following form:
-``python
+```python
 setuptools.setup(
      # ...
     
