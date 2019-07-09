@@ -154,7 +154,8 @@ The file ```setup.py``` is a python script that is used to describe the package 
 
 This template repository contains an example ```setup.py``` file for review and an overview of the file contents are below. For details on the strucutre of the file, please review the [setup.py section](https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py) in the Packaging Python Projects document. 
 
-_Description Section_
+___Description Section___
+
 One of the first sections in ```setup.py``` is reading in the contents of *DESCRIPTION.rst*. 
 ```python
 import io
@@ -169,8 +170,9 @@ This reads the contents of the description fine and places the resultant string 
 
 Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
-_setuptools.setup( install_requires=)_
-The *```isntall_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
+___setuptools.setup( install_requires=)___
+
+The *```install_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
 
 An example of this is the ```sparkfun-qwiic-i2c``` package, which all qwiic board python packages use. And example of this from the qwiic Proximity package ```setup()``` is as follows:
 ```python
@@ -195,3 +197,37 @@ setuptools.setup(
    )
 ```
 
+___setuptools.setup(classifiers[])___
+
+The classifiers argument to ```setup()``` are attrbitues that describe the package and are used details specifics to the PyPi respository and users of the project. While a [detailed list of of valid classifier values](https://pypi.org/pypi?%3Aaction=list_classifiers) is available at pypy.org, the key values are the project maturity (is it Alpha, Beta, Production?) and what python versions are supported. 
+
+The example script has the following classifiers:
+```python
+setuptools.setup(
+     # ...
+    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 5 - Production/Stable',
+
+        # Indicate who your project is intended for
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Build Tools',
+
+        # Pick your license as you wish (should match "license" above)
+        'License :: OSI Approved :: MIT License',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both. 
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+   
+    ],
+    # ...
+   )
+```
