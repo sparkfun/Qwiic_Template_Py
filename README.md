@@ -340,3 +340,11 @@ twine upload dist/*
 This command will prompt for the *username* and *password* for the pypi account to use for the upload.
 
 Once the upload is completed, the packages are now available for use via the pip installer. 
+
+NOTE: Your PyPi.org username and password can be specified in the file ```~/.pypirc``` instead of entering with each call to twine. The format of this file:
+
+```ini
+[pypi]
+username = <the username>
+password = <the password>
+```
