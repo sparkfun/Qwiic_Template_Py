@@ -361,8 +361,8 @@ Qwiic_Template_Py/
    |       +--- index.rst    - Top level documentation structure definition 
    |       +---     *.rst    - Defines additional pages for the documentation - index.rst references these files.
    |       +--- requirements.txt   - Lists the python modules the package depends on. 
-   |       + _static/
-   |            favicon.ico  - the favicon to use for the generated HTML text
+   |       `--- _static/
+   |                `--- favicon.ico    - the favicon to use for the generated HTML text
    |
    |--- .readthedocs.yml   - Defines how the ReadTheDocs environment is setup when building the documentation
 ```
