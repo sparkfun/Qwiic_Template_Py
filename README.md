@@ -89,13 +89,43 @@ Qwiic_Package_Py
            +---  ... Any other file, directory or resource that makes up the package
 ```
 
+Note: The souce of the implementation must be contain the [license attribution statement](#source-code-license-attribution)
+
 The LICENSE File
 ----------------
-The file named LICENSE contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
+The file named [LICENSE](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/LICENSE) contains the license for the repository. The name of the file, LICENSE, is used by other systems to identify which license the repository implements.
 
 For example, in GitHub, when the contents of the file is viewed, the system will display details about the license and clearly indicate to the user what the license covers. 
 
 The SparkFun qwiic python module implementations fall under the MIT license. 
+
+### Source Code License Attribution
+Each source file distributed with one of our python packags/modules must include the proper license attribution in the entry comment section of the code. 
+
+The Qwiic Python packages are licensed using the MIT license and as such should include the following statement in the top/entry section of the code:
+```python
+#==================================================================================
+# Copyright (c) 2019 SparkFun Electronics
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy 
+# of this software and associated documentation files (the "Software"), to deal 
+# in the Software without restriction, including without limitation the rights 
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+# copies of the Software, and to permit persons to whom the Software is 
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all 
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+# SOFTWARE.
+#==================================================================================
+```
 
 Installer/Package Creation
 --------------------------
@@ -113,7 +143,7 @@ Qwiic_Example_Py
 ```
 
 #### DESCRIPTION.rst
-This is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level desription of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
+The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level desription of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
 
 #### setup.cfg
-This file contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
+The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 

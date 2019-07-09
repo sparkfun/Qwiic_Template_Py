@@ -1,4 +1,4 @@
-Qwiic Micro OLED
+Qwiic Package Title
 ==========================
 
-This package provdes support for the SparkFun qwiic Micro OLED board.
+This is a short description of this package.
