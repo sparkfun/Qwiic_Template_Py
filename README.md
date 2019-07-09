@@ -12,12 +12,13 @@ for the SparkFun qwiic ecosystem.
 This repository defines the general structure of a repository and details the role of each file/location in the repository. 
 Additionally, the use of ReadTheDocs and PyPi are outlined. 
 
+The general structure implemented follows the guidelines setforth in the python packaging structure and tools. While this document provides a high-level overview of SparkFun's implementation of a python project, details of this process and structure can be found in the [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/) document provided by the Python Foundation. 
+
 For details and example use of the described structure, please review the existing pythong projects for the qwiic system. 
 Examples Include:
 * [Qwiic_CCS811_Py - An example of a repository for a single file, python module](https://github.com/sparkfun/Qwiic_CCS811_Py)
 * [Qwiic_Micro_OLED_Py - An example of a pythong package, that includes resource files](https://github.com/sparkfun/Qwiic_Micro_OLED_Py)
 * [Qwiic_Py - the overall package for the qwiic python system](https://github.com/sparkfun/Qwiic_Py)
-
 
 Repository Structure
 ---------------------
