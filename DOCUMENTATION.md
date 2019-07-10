@@ -1,4 +1,4 @@
-Documentation Generation - ReadTheDocs.org
+Documentation Generation and Publishing
 =============================================
 
 For each pacakge, the documentation is automatically generated and published using readthedocs.org. The documentation itself is generated using [Sphinx](http://www.sphinx-doc.org/), which creates the desried documentation HTML output based on source code comments and documentation structure files. 
@@ -317,4 +317,20 @@ cd docs
 sphinx-build -E -W -b html . _build/html
 ```
 The output of this process is placed in the directory ```docs/_build/html```. The generated documentation is visible by loading the file ```index.html``` in a browser.
+
+Publishing to ReadTheDocs.org
+-------------------------------
+
+To publish the documentation on ReadTheDocs.org, you'll need an account. Once the account is created, it needs to be linked/connected to the your SFE GitHub account. This is a standard oAuth2 connection process, which is initited in the the Account -> Settings -> Connected Services section of readthedocs.org.
+
+To import a project the following steps are taken:
+* First ensure the project contents are checked into GitHub and that the repository is public.
+* View "My Projects" on ReadTheDocs.
+* Select *Import a Project*
+* Under **Filter repositories** on the right of the page, select "SparkFun Electronics"
+* Either page through and find the project to import, or select "Import Manually" and enter the details of the target project.
+* Once imported, ReadTheDocs will being the build process for the documentation. The progress of this is followed by selecting the project on the [My Projects](https://readthedocs.org/dashboard/) page, and selected the project and once in the project, selecting the "Builds" button.
+* If the builds is successful, a link to the new documentation is made available. 
+
+If a documentation build fails, the best method to debug is to dig into the specific build (The Project -> Builds) and review the build log. If more detail is needed, the __View raw__ link on the build page will dispaly the raw log file from the build run. 
 
