@@ -1,5 +1,5 @@
 API Reference
 ==============
 
-.. automodule:: qwiic_bme280
+.. automodule:: qwiic_template
    :members:

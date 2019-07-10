@@ -98,12 +98,8 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=["qwiic_example_pacakge"]
+    py_modules=["qwiic_ccs811"],
 
-    # What data should this package include -- what is it dependent on. 
-
-    package_data={
-         "qwiic_example_package/data" : ['*.bin']
     },
 
 )
