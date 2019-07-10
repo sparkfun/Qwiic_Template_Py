@@ -478,3 +478,59 @@ This variable is set to the master documentation structure file being used. For 
 ```python
 master_doc = 'index'
 ```
+
+*Static Values*
+
+The last value worth noting is the static resources that should be used in documentation generation. For SparkFun documentation we include the favion.ico file from www.sparkfun.com. This file is located at ```docs/_static/favicon.ico``` and documented as follows in the conf.py file. 
+```python
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
+html_favicon = '_static/favicon.ico'
+```
+
+___docs/*.rst Files___
+
+The structure and contents of the documentation is oulined using a set of reStructured text (```.rst```) files, with the starting definition contained in ```docs/index.rst```.
+
+*docs/index.rst*
+
+This file defines the entry page for the documentation. For the qwiic documentation, we include the GitHub README.md file, and define a table of contents, which defines other pages of the documentation. 
+
+For the qwiic BME280 python package, this file contains the following:
+```rst
+.. mdinclude:: ../README.md
+
+Table of Contents
+=================
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Contents:
+
+   self
+
+
+.. toctree:: 
+   :caption: API Reference
+   :maxdepth: 3
+
+   apiref 
+
+.. toctree:: 
+   :caption: Examples
+
+   ex1
+   ex4
+   ex5
+
+.. toctree::
+   :caption: Other Links
+
+	SparkFun <https://sparkfun.com>
+   SparkFun Environmental Combo Breakout CCS811/BME280 <https://www.sparkfun.com/products/14348>
+	GitHub <https://github.com/sparkfun/Qwiic_BME280_Py>
+	SparkFun qwiic <https://www.sparkfun.com/qwiic>
+```
