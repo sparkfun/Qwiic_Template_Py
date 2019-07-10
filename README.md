@@ -565,7 +565,7 @@ For the package API:
 ```
 This section links to the file ```apiref.rst```
 
-And the examples section, which links to three example rst files:
+And the examples section, which links to three example rst files: ```ex1.rst, ex4.rst, ex5.rst```
 ```rst
 .. toctree:: 
    :caption: Examples
@@ -573,4 +573,46 @@ And the examples section, which links to three example rst files:
    ex1
    ex4
    ex5
+```
+
+*API Documentation*
+
+To document the projects API, the *autodoc* system of Sphinx is used. This system will crawl the specified files/packages and generate documention using the included *docstrings*. 
+
+For a moduled, like ```qwiic_bme280```, the contents of ```apiref.rst``` is:
+```rst
+API Reference
+==============
+
+.. automodule:: qwiic_bme280
+   :members:
+```
+This specifieds that Sphinx should inspect the qwiic_bme280 module, and document the package members. 
+
+Got python packages, such as the ```qwiic_mico_oled``` package, the documentation is contained in module and underlying class, so the rst file file takes a slightly different format:
+```rst
+API Reference
+==============
+
+.. automodule:: qwiic_micro_oled
+   :members:
+
+
+.. autoclass:: QwiicMicroOled
+	:members:
+```
+
+The Sphinx autodoc feature is extemely useful, and fully documented by the [Sphinx project](http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html).
+
+___Documeting Examples___
+
+Any examples for a package are also included in the documentation. These are defined in individiual rst files, which do nothing more that include the source of the example. 
+
+The following shows the format of an an example rst file, which does nothing more that inline a file, add the filename as the caption of the inline, and formats the included file with line numbers. 
+```rst
+Basic Operation
+---------------------------
+.. literalinclude:: ../examples/qwiic_bme280_ex1.py
+    :caption: examples/qwiic_bme280_ex1.py
+    :linenos:
 ```
