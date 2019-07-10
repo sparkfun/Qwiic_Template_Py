@@ -1,5 +1,5 @@
 Documentation Generation - ReadTheDocs.org
-------------------------------------------
+=============================================
 
 For each pacakge, the documentation is automatically generated and published using readthedocs.org. The documentation itself is generated using [Sphinx](http://www.sphinx-doc.org/), which creates the desried documentation HTML output based on source code comments and documentation structure files. 
 
@@ -296,4 +296,25 @@ The contents specifically being:
 * mr2 - the Markdown to reStructureText conversion module
 * sparkfun-qwiic-i2 - the I2C driver pacakge used by all qwiic packages.
 
+Local Documentation Generation
+_______________________________
+
+Sphinx is used to test the documentation before uploading the contents to ReadTheDocs.org. To build locally, execute the following steps:
+
+Insure the needed packages are installed, which are Sphinx, the sphinx read the docs theme and the markdown to reStructure Text conversion package m2r.
+
+```sh
+sudo pip install Sphinx sphinx_rtd_theme m2r
+```
+Additionally, the package being documented should be installed locally. Normall this is just done by running the following command in the root of the pacakge directory. 
+```sh
+sudo python setup.py install
+```
+
+Once installed, the documentatin is created as follows:
+```sh
+cd docs
+sphinx-build -E -W -b html . _build/html
+```
+The output of this process is placed in the directory ```docs/_build/html```. The generated documentation is visible by loading the file ```index.html``` in a browser.
 
