@@ -379,3 +379,69 @@ To create a packages documentation, the general development pattern is as follow
 * ReadThe docs generates and publishes the documentation.
     * The documentation is updated automatically when the project is updated on GitHub
     
+___Python Docstrings___
+
+Python has a built-in language feature used to embedd documentation strings in code, a feature called _docstrings_.
+
+From the docstring spec (PEP-0257):
+> A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the \__doc__ special attribute of that object.
+
+These strings are enclosed by triple quotes. While the format of the text is left to the user, the Sphinx system will honor reStructured text formatting. The qwiic system python documentation formats the docstrings as reStructure Text.
+
+An example of a docstring is the class definition for the QwiicBME280 object. 
+```python
+class QwiicBme280(object):
+	"""
+	QwiicBme280
+
+		:param address: The I2C address to use for the device. 
+						If not provided, the default address is used.
+		:param i2c_driver: An existing i2c driver object. If not provided 
+						a driver object is created. 
+		:return: The BME280 device object.
+		:rtype: Object
+	"""
+```
+Note that the docstring is the first statement after the class definition. 
+
+Doc strings for methods following the method declaration statement:
+```python
+def setFilter(self, filterSetting):
+		"""
+		Set the filter bits in the BME280s config register
+
+		:param filterSetting: The filter bits for the BME280. Acceptable values
+						0 = filter off
+	  					1 = coefficients = 2
+	  					2 = coefficients = 4
+	  					3 = coefficients = 8
+	  					4 = coefficients = 16
+
+		:return: No return value 
+
+		"""
+```
+
+And you can even add docstrings to a module (file) - placing the docstring at the top (first non-comment) of the file.
+```python
+#==================================================================================
+
+"""
+qwiic_bme280
+============
+Python module for the qwiic bme280 sensor, which is part of the [SparkFun Qwiic Environmental Combo Breakout](https://www.sparkfun.com/products/14348)
+
+This python package is a port of the existing [SparkFun BME280 Arduino Library](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library)
+
+This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
+
+New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).
+
+"""
+#-----------------------------------------------------------------------------
+
+import math
+import qwiic_i2c
+```
+
+The Sphinx documentation package uses the values of the ```__doc___``` attribute of objects to locate and generate documentation. 
