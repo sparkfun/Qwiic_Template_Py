@@ -1,7 +1,7 @@
 
 
-Adjust Sensor Settings
+Example 2
 -----------------------------------
-.. literalinclude:: ../examples/qwiic_bme280_ex4.py
-    :caption: examples/qwiic_bme280_ex4.py
+.. literalinclude:: ../examples/qwiic_ex2.py
+    :caption: examples/qwiic_ex2.py
     :linenos:

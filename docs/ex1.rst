@@ -1,7 +1,7 @@
 
-Basic Operation
+Example One
 ---------------------------
-.. literalinclude:: ../examples/qwiic_bme280_ex1.py
-    :caption: examples/qwiic_bme280_ex1.py
+.. literalinclude:: ../examples/qwiic_ex1.py
+    :caption: examples/qwiic_ex1.py
     :linenos:
 
