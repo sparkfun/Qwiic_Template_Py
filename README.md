@@ -534,3 +534,43 @@ Table of Contents
 	GitHub <https://github.com/sparkfun/Qwiic_BME280_Py>
 	SparkFun qwiic <https://www.sparkfun.com/qwiic>
 ```
+
+The key elements of this file:
+
+**.. mdinclude:: ../README.md**
+
+This includes the packages README.md file, with ```mdinclude``` noting that the file is formatted in markdown.
+
+**.. toctree:: **
+
+Defines an section in the table of contents, and the content of this section.
+
+For the main page (index.rst):
+```rst
+.. toctree::
+   :maxdepth: 4
+   :caption: Contents:
+
+   self
+```
+Note the section referances ```self```
+
+For the package API:
+```rst
+.. toctree:: 
+   :caption: API Reference
+   :maxdepth: 3
+
+   apiref 
+```
+This section links to the file ```apiref.rst```
+
+And the examples section, which links to three example rst files:
+```rst
+.. toctree:: 
+   :caption: Examples
+
+   ex1
+   ex4
+   ex5
+```
