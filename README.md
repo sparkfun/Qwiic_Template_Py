@@ -444,4 +444,37 @@ import math
 import qwiic_i2c
 ```
 
-The Sphinx documentation package uses the values of the ```__doc___``` attribute of objects to locate and generate documentation. 
+The Sphinx documentation package uses the values of the ```__doc___``` attribute of objects to locate and generate documentation. As such, the Sphinx system (either run locally or by ReadTheDocs.org) will instatiate the package as part of the documentation generation process. As such, the depenancies and needs of the package must be defined in the documentation configuration files.
+
+___docs/conf.py___
+
+The ````docs/conf.py``` file sets the configuration Sphinx will use when building the documentation set. Key areas of this file are:
+
+*Project Information*
+
+These are variables that describe the project. The key value being the name of the project.
+```python
+project = 'sparkfun_qwiic_bme280'
+copyright = '2019, SparkFun Electronics'
+author = 'SparkFun Electronics'
+```
+
+*Project Extensions*
+
+This is an array that contains the names of extensions to the Sphinx system to geneate the documentation. These are python packages that should be installed on your system (for local documentation builds). For the qwiic python packages, the following statement is used:
+```python
+extensions = [ 
+	'sphinx.ext.autodoc',
+	'sphinx.ext.intersphinx',
+	'sphinx.ext.viewcode',
+	'm2r'
+	]
+```
+The unique package here is ```m2r```, which converts markdown into reStructured text. This allows the documentation system to import the GitHub README.md files into the generated documentation page.
+
+*master_doc*
+
+This variable is set to the master documentation structure file being used. For the qwiic packages, this value is set to ```"index"```, which tells Sphinx to use ```index.rst``` to define the documentation structure. 
+```python
+master_doc = 'index'
+```
