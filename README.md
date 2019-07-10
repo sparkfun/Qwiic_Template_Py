@@ -351,31 +351,5 @@ password = <the password>
 Documentation Generation - ReadTheDocs.org
 ------------------------------------------
 
-For each pacakge, the documentation is automatically generated and published using readthedocs.org. The documentation itself is generated using [Sphinx](http://www.sphinx-doc.org/), which creates the desried documentation HTML output based on source code comments and documentation structure files. 
+Details of the documentation generation process are contained in the file [DOCUMENTATION.md](DOCUMENTATION.md)
 
-The repository files used to define and create the documentation are the following:
-```
-Qwiic_Template_Py/
-   +--- docs/
-   |       +--- conf.py      - defines the input and output behavior of Sphinx
-   |       +--- index.rst    - Top level documentation structure definition 
-   |       +---     *.rst    - Defines additional pages for the documentation - index.rst references these files.
-   |       +--- requirements.txt   - Lists the python modules the package depends on. 
-   |       `--- _static/
-   |                `--- favicon.ico    - the favicon to use for the generated HTML text
-   |
-   |--- .readthedocs.yml   - Defines how the ReadTheDocs environment is setup when building the documentation
-```
-
-
-To create a packages documentation, the general development pattern is as follows:
-* Documentation is added to the python source code using [docstrings](https://www.python.org/dev/peps/pep-0257/)
-* Documentation configuration is define in ```docs/conf.py```
-* Package depenancies are added to ```docs/requirements.txt```
-* The file ```index.rst``` is updated for the desired documentation structure. Addtional ```.rst``` files are added as needed.
-* Documentation is generated locally using Sphinx for testing
-* Validated documentation files are checked into the GitHub repository.
-* The GitHub repository is imported and linked to a project in ReadTheDocs.org
-* ReadThe docs generates and publishes the documentation.
-    * The documentation is updated automatically when the project is updated on GitHub
-    
