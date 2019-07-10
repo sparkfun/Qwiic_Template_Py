@@ -604,7 +604,7 @@ API Reference
 
 The Sphinx autodoc feature is extemely useful, and fully documented by the [Sphinx project](http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html).
 
-___Documeting Examples___
+___Documenting Examples___
 
 Any examples for a package are also included in the documentation. These are defined in individiual rst files, which do nothing more that include the source of the example. 
 
@@ -616,3 +616,34 @@ Basic Operation
     :caption: examples/qwiic_bme280_ex1.py
     :linenos:
 ```
+
+___The .readthedocs.yml File___
+
+This file defines the attributes and packages ReadTheDocs should use when creating the documentation generation environment. As noted above, Sphinx instantiates the contents of the pacakge so that it can access the python docstrings during the generation process. The file ```.readthedocs.yml``` and it's associated file ```docs/requirements.txt``` define the environment to use. 
+
+The contents of ```.readthedocs``` used by the qwiic modules is:
+```yml
+python:
+   version: 3
+   install:
+      - requirements: docs/requirements.txt
+   setup_py_install: true
+```
+This file tells ReadTheDocs the following:
+* Use Python version 3 to generate the docs
+* Install the modules contained in ```docs/requirements.txt```
+* Install the package/module defined by this repository using a the contents of ```setup.py``` 
+
+The ```docs/requirements.txt``` file contains the modules this package needs to generate documentation. This is used by Sphinx when generating local documentation, and by ReadTheDocs, as noted above in the contents of the ```.readthedocs.yml``` file.
+
+For most qwiic driver packages, this file contains the following:
+```txt
+m2r
+sparkfun-qwiic-i2c
+```
+The contents specifically being:
+
+* mr2 - the Markdown to reStructureText conversion module
+* sparkfun-qwiic-i2 - the I2C driver pacakge used by all qwiic packages.
+
+
