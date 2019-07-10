@@ -334,3 +334,6 @@ To import a project the following steps are taken:
 
 If a documentation build fails, the best method to debug is to dig into the specific build (The Project -> Builds) and review the build log. If more detail is needed, the __View raw__ link on the build page will dispaly the raw log file from the build run. 
 
+#### Documentation Update
+
+The update process for the documentation is automatic. Whenever the projects master branch on GitHub is updated, ReadTheDocs will initiate a documentation build using the new package content.
