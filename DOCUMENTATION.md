@@ -314,7 +314,7 @@ sudo python setup.py install
 Once installed, the documentatin is created as follows:
 ```sh
 cd docs
-sphinx-build -E -W -b html . _build/html
+sphinx-build -E -b html . _build/html
 ```
 The output of this process is placed in the directory ```docs/_build/html```. The generated documentation is visible by loading the file ```index.html``` in a browser.
 
