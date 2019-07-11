@@ -109,8 +109,80 @@ class QwiicScmd(object):
 		:rtype: Object
 	"""
 	device_name = "Qwiic Serial Control Motor Driver"
-   # note, the first address is the default I2C address.
+	
+        # note, the first address is the default I2C address.
 	available_addresses = [0x58, 0x59, 0x5A, 0x5C]
+```
+#### The Constructor 
+The qwiic package expects the constructor of the class to implement the following signature:
+```
+def __init__(self, address=None, i2c_driver=None):
+```
+The method supports the following parameters:
+
+|Parameter | Description |
+|----|----|
+|address| The I2C address to use for the device. If not provided, the default address is used|
+|i2c_driver| An existing qwiic I2C device object. If not provided, the class should create an instance of driver|
+
+The initial body of the constructor handles these paramters - setting the I2C address and constructing a I2C driver if needed. The following object constructor provides a *boilerplate* implementation for this functionality. 
+
+```python
+def __init__(self, address=None, i2c_driver=None):
+
+
+		# Did the user specify an I2C address?
+		self.address = address if address != None else self.available_addresses[0]
+
+		# load the I2C driver if one isn't provided
+
+		if i2c_driver == None:
+			self._i2c = qwiic_i2c.getI2CDriver()
+			if self._i2c == None:
+				print("Unable to load I2C driver for this platform.")
+				return
+		else:
+			self._i2c = i2c_driver
+```
+Note - the docstring for the constructor is actuall the docstring for the class.
+
+### Interface Convensions
+While not strictly required, the following convensions and patterns are used for qwiic driver implementations
+
+#### Device Constants as Class Attributes
+A standard methodlogy for I2C device implementations is to define constants (#defines in C/C++) for I2C interaction values for a device. For qwiic python modules these values are defined as capiaolized attributes and either placed as file attributes or class attributes on the driver class. 
+
+The convension is to implement any attributes required for user interation as class attributes. Any interneral values are created as file/modules attributes. 
+
+#### isConnected() Method
+Each class implements an ```isConnected()``` method that returns True the specific qwiic device is connect to the system. 
+
+This is a standard method, that often uses the following implementation pattern.
+```python
+def isConnected(self):
+		""" 
+			Determine if a SCMD device is conntected to the system..
+
+			:return: True if the device is connected, otherwise False.
+			:rtype: bool
+
+		"""
+		return qwiic_i2c.isDeviceConnected(self.address)
+```
+
+#### A begin() Method
+Following the pattern set by the qwiic Arduino libraries, a begin() method is used to perform the actual initializtion of the underlying I2C device. 
+
+While each device implements device specific initiatialization logic, the signature of this method is as follows:
+```python
+def begin(self):
+		""" 
+			Initialize the operation of the SCMD module
+
+			:return: Returns true of the initializtion was successful, otherwise False.
+			:rtype: bool
+
+		"""
 ```
 
 
