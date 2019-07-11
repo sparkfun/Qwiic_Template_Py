@@ -49,9 +49,73 @@ Qwiic_Template_Py/
    
 
 ```
-
 Implementation
---------------
+-----------------
+To keep the implementation simple and minimize resource needs, there are few design requirements when implementing a new qwiic I2C driver. Each driver implements a class that encapsulates all interations with the underlying I2C device. This class implements a simple interface that enables the higher-level functionality provided by the overarching [qwiic package](https://github.com/sparkfun/Qwiic_Py).
+
+The specific implementation requirements are as follows
+
+### Device Class
+Each developmend driver package implements a class that encapsulates all interactions with this device. 
+
+#### Class Name
+The class name should be a CamelCase version of the package name. This naming schema is used by future automation functionality and follows common python methodologies
+
+```
+     qwiic_bme280.          -> QwiicBme280
+     qwiic_micro_oled       -> QwiicMicroOled
+     qwiic_scmd             -> QwiicScmd
+     qwiic_my_super_board.  -> QwiicMySuperBoard
+```
+
+An example of a class declaration (note the use and location of the class docstring):
+```python
+class QwiicScmd(object):
+	"""
+	QwiicScmd
+
+		:param address: The I2C address to use for the device. 
+						If not provided, the default address is used.
+		:param i2c_driver: An existing i2c driver object. If not provided 
+						a driver object is created. 
+		:return: The Serial Control Motor Driver device object.
+		:rtype: Object
+	"""
+```
+
+#### Class Variables
+To support the dynamic discovery and enumeration of qwiic boards by the [qwiic package](https://github.com/sparkfun/Qwiic_Py), each object implements a set of class variables. This allows the qwiic package to inspect these values at runtime without having to instantiate an actual object. 
+
+These variables are:
+
+| Class Variable Name| Description|
+|----|----|
+|**device_name**      |      - Set to the human readable name of the device|
+|**available_addresses**|   - Set to an array of the I2C addresses this device supports. The first address is the default|
+
+These values are set outside of any class method, by convension they are placed right after the class declaration statement. 
+
+Example:
+```python
+class QwiicScmd(object):
+	"""
+	QwiicScmd
+
+		:param address: The I2C address to use for the device. 
+						If not provided, the default address is used.
+		:param i2c_driver: An existing i2c driver object. If not provided 
+						a driver object is created. 
+		:return: The Serial Control Motor Driver device object.
+		:rtype: Object
+	"""
+	device_name = "Qwiic Serial Control Motor Driver"
+   # note, the first address is the default I2C address.
+	available_addresses = [0x58, 0x59, 0x5A, 0x5C]
+```
+
+
+Implementation Structure
+-------------------------
 There are two patterns of implementation for a package - a python module or a python package. 
 
 To the end user a package or module looks the same, but the implementation within the repository is different. 
