@@ -154,12 +154,12 @@ A standard methodlogy for I2C device implementations is to define constants (#de
 
 The convension is to implement any attributes required for user interation as class attributes. Any interneral values are created as file/modules attributes. 
 
-#### isConnected() Method
-Each class implements an ```isConnected()``` method that returns True the specific qwiic device is connect to the system. 
+#### is_connected() Method
+Each class implements an ```is_connected()``` method that returns True the specific qwiic device is connect to the system. 
 
 This is a standard method, that often uses the following implementation pattern.
 ```python
-def isConnected(self):
+def is_connected(self):
 		""" 
 			Determine if a SCMD device is conntected to the system..
 
@@ -168,7 +168,12 @@ def isConnected(self):
 
 		"""
 		return qwiic_i2c.isDeviceConnected(self.address)
+	
+# expose as a property
+connected = property(is_connected)
 ```
+
+Additionally, the method is exposed as a read-only attribute on the object. 
 
 #### A begin() Method
 Following the pattern set by the qwiic Arduino libraries, a begin() method is used to perform the actual initializtion of the underlying I2C device. 
