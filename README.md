@@ -456,9 +456,9 @@ To publish a new package, you can use this account. If you are updating or modif
 
 #### Build the Package distributions
 
-To build and uplaod the pacakges, make sure the required python packages are installed - setuptools and twine. 
+To build and uplaod the pacakges, make sure the required python packages are installed - setuptools, twine, and wheel. 
 ```sh
-sudo pip install setuptools twine
+sudo pip install setuptools twine wheel
 ```
 
 Build the distribution packages using the following commands (executing in the package root directory). First create a standard distribution:
