@@ -59,7 +59,7 @@ The specific implementation requirements are as follows
 Each developmend driver package implements a class that encapsulates all interactions with this device. 
 
 #### Class Name
-The class name should be a CamelCase version of the package name. This naming schema is used by future automation functionality and follows common python methodologies
+The class name should be a **CamelCase** version of the package name. This naming schema is used by future automation functionality and follows common python methodologies
 
 ```
      qwiic_bme280.          -> QwiicBme280
@@ -494,3 +494,35 @@ Documentation Generation - ReadTheDocs.org
 
 Details of the documentation generation process are contained in the file [DOCUMENTATION.md](DOCUMENTATION.md)
 
+Adding the Module dependency  to the main qwiic package, Qwiic_Py
+------------------------------------------------------------------
+
+Adding the Module dependency  to the main qwiic package, Qwiic_Py 
+
+The overall qwiic package, which is hosted in the Qwiic_Py repository, defines dependencies to all the SparkFun  qwiic python packages. This is accomplished by adding modules to the repo as git submodules. 
+
+New drivers are added as git submodules in the Qwiic_Py/qwiic/drivers directory. 
+
+Naming of the driver directory is important – it should map to the package name in PyPi, minus the initial ‘sparkfun-‘ name. 
+
+So for the BME280 package, which is defined in PyPi as ‘sparkfun-qwiic-bme280’, would be placed in a directory named ‘qwiic_bme280’ in the drivers folder. 
+
+To add a driver/package to the qwiic repository, do the following steps:
+* Clone the qwiic repository 
+```git clone git@github.com:sparkfun/Qwiic_Py.git```
+-* Move to the drivers directory
+```cd Qwiic_Py/qwiic/drivers```
+* Add the submodule, using the following command
+``` git submodule add <repo to add> <name of driver folder>```
+
+Example for the Titan GPS driver
+``` git submodule add git@github.com:sparkfun/Qwiic_Titan_Gps_Py.git qwiic_titan_gps ```
+
+* Add this new folder to the repo, commit it and push to GitHub 
+
+Once completed, the Qwiic_Py package must be updated and uploaded to PyPi. 
+
+* Bump up the version in the setup.py file. This step defines package dependencies for everything contained in the drivers subfolder, including the newly added submodule. 
+* Follow the above package build and upload steps
+
+Once completed, an update/install of the sparkfun-qwiic package will include the new submodule
