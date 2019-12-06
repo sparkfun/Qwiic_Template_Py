@@ -510,7 +510,7 @@ So for the BME280 package, which is defined in PyPi as â€˜sparkfun-qwiic-bme280â
 To add a driver/package to the qwiic repository, do the following steps:
 * Clone the qwiic repository 
 ```git clone git@github.com:sparkfun/Qwiic_Py.git```
--* Move to the drivers directory
+* Move to the drivers directory
 ```cd Qwiic_Py/qwiic/drivers```
 * Add the submodule, using the following command
 ``` git submodule add <repo to add> <name of driver folder>```
