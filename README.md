@@ -7,23 +7,23 @@ Qwiic_Template_Py
 
 
 This is a template repository and associated documentation that outlines how to publish and maintain a python package 
-for the SparkFun qwiic ecosystem.
+for the SparkFun Qwiic ecosystem.
 
 This repository defines the general structure of a repository and details the role of each file/location in the repository. 
 Additionally, the use of ReadTheDocs and PyPi are outlined. 
 
-The general structure implemented follows the guidelines setforth in the python packaging structure and tools. While this document provides a high-level overview of SparkFun's implementation of a python project, details of this process and structure can be found in the [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/) document provided by the Python Foundation. 
+The general structure implemented follows the guidelines set forth in the python packaging structure and tools. While this document provides a high-level overview of SparkFun's implementation of a python project, details of this process and structure can be found in the [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/) document provided by the Python Foundation. 
 
-For details and example use of the described structure, please review the existing pythong projects for the qwiic system. 
+For details and example use of the described structure, please review the existing python projects for the Qwiic system. 
 Examples Include:
 * [Qwiic_CCS811_Py - An example of a repository for a single file, python module](https://github.com/sparkfun/Qwiic_CCS811_Py)
-* [Qwiic_Micro_OLED_Py - An example of a pythong package, that includes resource files](https://github.com/sparkfun/Qwiic_Micro_OLED_Py)
-* [Qwiic_Py - the overall package for the qwiic python system](https://github.com/sparkfun/Qwiic_Py)
+* [Qwiic_Micro_OLED_Py - An example of a python package, that includes resource files](https://github.com/sparkfun/Qwiic_Micro_OLED_Py)
+* [Qwiic_Py - the overall package for the Qwiic python system](https://github.com/sparkfun/Qwiic_Py)
 
 Repository Structure
 ---------------------
 
-The general structure of a qwiic Python repository is as follows
+The general structure of a Qwiic Python repository is as follows
 
 ```
 Qwiic_Template_Py/
@@ -51,7 +51,7 @@ Qwiic_Template_Py/
 ```
 Implementation
 -----------------
-To keep the implementation simple and minimize resource needs, there are few design requirements when implementing a new qwiic I2C driver. Each driver implements a class that encapsulates all interations with the underlying I2C device. This class implements a simple interface that enables the higher-level functionality provided by the overarching [qwiic package](https://github.com/sparkfun/Qwiic_Py).
+To keep the implementation simple and minimize resource needs, there are few design requirements when implementing a new Qwiic I2C driver. Each driver implements a class that encapsulates all interations with the underlying I2C device. This class implements a simple interface that enables the higher-level functionality provided by the overarching [Qwiic package](https://github.com/sparkfun/Qwiic_Py).
 
 The specific implementation requirements are as follows
 
@@ -84,7 +84,7 @@ class QwiicScmd(object):
 ```
 
 #### Class Variables
-To support the dynamic discovery and enumeration of qwiic boards by the [qwiic package](https://github.com/sparkfun/Qwiic_Py), each object implements a set of class variables. This allows the qwiic package to inspect these values at runtime without having to instantiate an actual object. 
+To support the dynamic discovery and enumeration of Qwiic boards by the [Qwiic package](https://github.com/sparkfun/Qwiic_Py), each object implements a set of class variables. This allows the Qwiic package to inspect these values at runtime without having to instantiate an actual object. 
 
 These variables are:
 
@@ -93,7 +93,7 @@ These variables are:
 |**device_name**      |      - Set to the human readable name of the device|
 |**available_addresses**|   - Set to an array of the I2C addresses this device supports. The first address is the default|
 
-These values are set outside of any class method, by convension they are placed right after the class declaration statement. 
+These values are set outside of any class method, by convention they are placed right after the class declaration statement. 
 
 Example:
 ```python
@@ -114,7 +114,7 @@ class QwiicScmd(object):
 	available_addresses = [0x58, 0x59, 0x5A, 0x5C]
 ```
 #### The Constructor 
-The qwiic package expects the constructor of the class to implement the following signature:
+The Qwiic package expects the constructor of the class to implement the following signature:
 ```
 def __init__(self, address=None, i2c_driver=None):
 ```
@@ -123,9 +123,9 @@ The method supports the following parameters:
 |Parameter | Description |
 |----|----|
 |address| The I2C address to use for the device. If not provided, the default address is used|
-|i2c_driver| An existing qwiic I2C device object. If not provided, the class should create an instance of driver|
+|i2c_driver| An existing Qwiic I2C device object. If not provided, the class should create an instance of driver|
 
-The initial body of the constructor handles these paramters - setting the I2C address and constructing a I2C driver if needed. The following object constructor provides a *boilerplate* implementation for this functionality. 
+The initial body of the constructor handles these parameters - setting the I2C address and constructing a I2C driver if needed. The following object constructor provides a *boilerplate* implementation for this functionality. 
 
 ```python
 def __init__(self, address=None, i2c_driver=None):
@@ -146,16 +146,16 @@ def __init__(self, address=None, i2c_driver=None):
 ```
 Note - the docstring for the constructor is actuall the docstring for the class.
 
-### Interface Convensions
-While not strictly required, the following convensions and patterns are used for qwiic driver implementations
+### Interface Conventions
+While not strictly required, the following conventions and patterns are used for qwiic driver implementations
 
 #### Device Constants as Class Attributes
-A standard methodlogy for I2C device implementations is to define constants (#defines in C/C++) for I2C interaction values for a device. For qwiic python modules these values are defined as capiaolized attributes and either placed as file attributes or class attributes on the driver class. 
+A standard methodology for I2C device implementations is to define constants (#defines in C/C++) for I2C interaction values for a device. For Qwiic python modules these values are defined as capitalized attributes and either placed as file attributes or class attributes on the driver class. 
 
-The convension is to implement any attributes required for user interation as class attributes. Any interneral values are created as file/modules attributes. 
+The convention is to implement any attributes required for user interaction as class attributes. Any internal values are created as file/modules attributes. 
 
 #### is_connected() Method
-Each class implements an ```is_connected()``` method that returns True the specific qwiic device is connect to the system. 
+Each class implements an ```is_connected()``` method that returns True the specific Qwiic device is connect to the system. 
 
 This is a standard method, that often uses the following implementation pattern.
 ```python
@@ -176,7 +176,7 @@ connected = property(is_connected)
 Additionally, the method is exposed as a read-only attribute on the object. 
 
 #### A begin() Method
-Following the pattern set by the qwiic Arduino libraries, a begin() method is used to perform the actual initializtion of the underlying I2C device. 
+Following the pattern set by the Qwiic Arduino libraries, a begin() method is used to perform the actual initializtion of the underlying I2C device. 
 
 While each device implements device specific initiatialization logic, the signature of this method is as follows:
 ```python
@@ -231,7 +231,7 @@ Qwiic_Package_Py
            +---  ... Any other file, directory or resource that makes up the package
 ```
 
-Note: The souce of the implementation must be contain the [license attribution statement](#source-code-license-attribution)
+Note: The souce of the implementation must be contain the [license attribution statement](#source-code-license-attribution).
 
 The LICENSE File
 ----------------
@@ -239,7 +239,7 @@ The file named [LICENSE](https://github.com/sparkfun/Qwiic_Template_Py/blob/mast
 
 For example, in GitHub, when the contents of the file is viewed, the system will display details about the license and clearly indicate to the user what the license covers. 
 
-The SparkFun qwiic python module implementations fall under the MIT license. 
+The SparkFun Qwiic python module implementations fall under the MIT license. 
 
 ### Source Code License Attribution
 Each source file distributed with one of our python packags/modules must include the proper license attribution in the entry comment section of the code. 
@@ -271,7 +271,7 @@ The Qwiic Python packages are licensed using the MIT license and as such should 
 
 Installer/Package Creation
 --------------------------
-The qwiic Python components are pacakged using standard python package/install tools, and hosted within the Python Package Index (pypy.org).
+The Qwiic Python components are packaged using standard python package/install tools, and hosted within the Python Package Index (pypy.org).
 
 Within the repository, the files that makeup the package are the following:
 ```
@@ -285,7 +285,7 @@ Qwiic_Example_Py
 ```
 
 #### DESCRIPTION.rst
-The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level desription of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
+The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level description of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
 
 #### setup.cfg
 The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
@@ -311,16 +311,16 @@ This reads the contents of the description fine and places the resultant string 
 
 Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
-__setuptools.setup( name=)___
+___setuptools.setup( name=)___
 
-This keyword is set to the name to publish the package under in PyPi.org. This is the name passed to the ```pip``` command for installing the package.
+This keyword is set to the name to publish the package under in PyPi.org and the name passed to the ```pip``` command for installing the package.
 
 The following command shows this value for the qwiic bme280:
 ```python
 setuptools.setup(
-     # ...
+    # ...
     name='sparkfun_qwiic_bme280',
-   # ...
+    # ...
    )
 ```
 
@@ -330,26 +330,26 @@ ___setuptools.setup( install_requires=)___
 
 The *```install_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
 
-An example of this is the ```sparkfun-qwiic-i2c``` package, which all qwiic board python packages use. And example of this from the qwiic Proximity package ```setup()``` is as follows:
+An example of this is the ```sparkfun-qwiic-i2c``` package, which all Qwiic board python packages use. An example of this from the Qwiic Proximity package ```setup()``` is as follows:
 ```python
 setuptools.setup(
-     # ...
+    # ...
      
     install_requires=['sparkfun_qwiic_i2c'],
 
-   # ...
+		# ...
    )
 ```
-For the overall qwiic package, which depends on all driver packages, this parameter has the following form:
+For the overall Qwiic package, which depends on all driver packages, this parameter has the following form:
 ```python
 setuptools.setup(
-     # ...
+    # ...
     
     setup_requires = ['sparkfun_qwiic_ccs811', 'sparkfun_qwiic_bme280', \
             'sparkfun_qwiic_micro_oled', 'sparkfun_qwiic_proximity', \
             'sparkfun_qwiic_scmd', 'sparkfun_qwiic_i2c']
 
-   # ...
+    # ...
    )
 ```
 
@@ -360,7 +360,7 @@ The classifiers argument to ```setup()``` are attrbitues that describe the packa
 The example script has the following classifiers:
 ```python
 setuptools.setup(
-     # ...
+    # ...
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are
@@ -394,7 +394,7 @@ ___setuptools.setup(packages=[])___
 
 If your repository defines one or more packages (directories), the names of these packages are provided to the ```packages``` keyboard argument to setuptools. Note: this is the directory/package name the user references in python code, not the package name used by PyPi - which can also contain additional keywords. 
 
-For the qwiic package, this is just the qwiic directory:
+For the Qwiic package, this is just the Qwiic directory:
 ```python
 setuptools.setup(
      # ...
@@ -435,7 +435,7 @@ ___setuptools.setup(py_modules=[])___
 
 If the install package implements a modudule (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.
 
-For the qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
+For the Qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
 ```python
 setuptools.setup(
      # ...
@@ -456,7 +456,7 @@ To publish a new package, you can use this account. If you are updating or modif
 
 #### Build the Package distributions
 
-To build and uplaod the pacakges, make sure the required python packages are installed - setuptools, twine, and wheel. 
+To build and uplaod the packages, make sure the required python packages are installed - **setuptools**, **twine**, and **wheel**. 
 ```sh
 sudo pip install setuptools twine wheel
 ```
@@ -473,7 +473,7 @@ These commands will create distribution package files and place them in the ```.
 
 ### Upload the Package to PyPi.org
 
-The ```twine``` command is used to upload the install packages to pypi.org. To upload the pacakges, use the following command:
+The ```twine``` command is used to upload the install packages to pypi.org. To upload the packages, use the following command:
 
 ```sh
 twine upload dist/*
@@ -494,12 +494,12 @@ Documentation Generation - ReadTheDocs.org
 
 Details of the documentation generation process are contained in the file [DOCUMENTATION.md](DOCUMENTATION.md)
 
-Adding the Module dependency  to the main qwiic package, Qwiic_Py
+Adding the Module dependency  to the main Qwiic package, Qwiic_Py
 ------------------------------------------------------------------
 
-Adding the Module dependency  to the main qwiic package, Qwiic_Py 
+Adding the Module dependency  to the main Qwiic package, Qwiic_Py 
 
-The overall qwiic package, which is hosted in the Qwiic_Py repository, defines dependencies to all the SparkFun  qwiic python packages. This is accomplished by adding modules to the repo as git submodules. 
+The overall Qwiic package, which is hosted in the Qwiic_Py repository, defines dependencies to all the SparkFun  Qwiic python packages. This is accomplished by adding modules to the repo as git submodules. 
 
 New drivers are added as git submodules in the Qwiic_Py/qwiic/drivers directory. 
 
@@ -507,8 +507,8 @@ Naming of the driver directory is important – it should map to the package nam
 
 So for the BME280 package, which is defined in PyPi as ‘sparkfun-qwiic-bme280’, would be placed in a directory named ‘qwiic_bme280’ in the drivers folder. 
 
-To add a driver/package to the qwiic repository, do the following steps:
-* Clone the qwiic repository 
+To add a driver/package to the Qwiic repository, do the following steps:
+* Clone the Qwiic repository 
 ```git clone git@github.com:sparkfun/Qwiic_Py.git```
 * Move to the drivers directory
 ```cd Qwiic_Py/qwiic/drivers```
