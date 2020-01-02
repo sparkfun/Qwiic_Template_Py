@@ -1,7 +1,7 @@
 Documentation Generation and Publishing
 =============================================
 
-For each pacakge, the documentation is automatically generated and published using readthedocs.org. The documentation itself is generated using [Sphinx](http://www.sphinx-doc.org/), which creates the desried documentation HTML output based on source code comments and documentation structure files. 
+For each package, the documentation is automatically generated and published using readthedocs.org. The documentation itself is generated using [Sphinx](http://www.sphinx-doc.org/), which creates the desired documentation HTML output based on source code comments and documentation structure files. 
 
 The repository files used to define and create the documentation are the following:
 ```
@@ -237,7 +237,7 @@ API Reference
 .. automodule:: qwiic_bme280
    :members:
 ```
-This specifieds that Sphinx should inspect the qwiic_bme280 module, and document the package members. 
+This specifies that Sphinx should inspect the qwiic_bme280 module, and document the package members. 
 
 Got python packages, such as the ```qwiic_mico_oled``` package, the documentation is contained in module and underlying class, so the rst file file takes a slightly different format:
 ```rst
@@ -269,7 +269,7 @@ Basic Operation
 
 ___The .readthedocs.yml File___
 
-This file defines the attributes and packages ReadTheDocs should use when creating the documentation generation environment. As noted above, Sphinx instantiates the contents of the pacakge so that it can access the python docstrings during the generation process. The file ```.readthedocs.yml``` and it's associated file ```docs/requirements.txt``` define the environment to use. 
+This file defines the attributes and packages ReadTheDocs should use when creating the documentation generation environment. As noted above, Sphinx instantiates the contents of the package so that it can access the python docstrings during the generation process. The file ```.readthedocs.yml``` and it's associated file ```docs/requirements.txt``` define the environment to use. 
 
 The contents of ```.readthedocs``` used by the qwiic modules is:
 ```yml
@@ -294,7 +294,7 @@ sparkfun-qwiic-i2c
 The contents specifically being:
 
 * mr2 - the Markdown to reStructureText conversion module
-* sparkfun-qwiic-i2 - the I2C driver pacakge used by all qwiic packages.
+* sparkfun-qwiic-i2 - the I2C driver package used by all qwiic packages.
 
 Local Documentation Generation
 _______________________________
@@ -306,7 +306,7 @@ Insure the needed packages are installed, which are Sphinx, the sphinx read the 
 ```sh
 sudo pip install Sphinx sphinx_rtd_theme m2r
 ```
-Additionally, the package being documented should be installed locally. Normall this is just done by running the following command in the root of the pacakge directory. 
+Additionally, the package being documented should be installed locally. Normally this is just done by running the following command in the root of the package directory. 
 ```sh
 sudo python setup.py install
 ```
