@@ -518,6 +518,12 @@ To add a driver/package to the Qwiic repository, do the following steps:
 Example for the Titan GPS driver
 ``` git submodule add git@github.com:sparkfun/Qwiic_Titan_Gps_Py.git qwiic_titan_gps ```
 
+_Note, if you get a failure due to permissions, you may need to use the complete URL for the \<repo to add\>._
+
+Example for the Titan GPS driver (with full URL)
+``` git submodule add https://github.com/sparkfun/Qwiic_Titan_Gps_Py qwiic_titan_gps ```
+
+
 * Add this new folder to the repo, commit it and push to GitHub 
 
 Once completed, the Qwiic_Py package must be updated and uploaded to PyPi. 
