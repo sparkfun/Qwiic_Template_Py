@@ -351,10 +351,12 @@ For the overall Qwiic package, which depends on all driver packages, this parame
 ```python
 setuptools.setup(
     # ...
-    
-    setup_requires = ['sparkfun_qwiic_ccs811', 'sparkfun_qwiic_bme280', \
-            'sparkfun_qwiic_micro_oled', 'sparkfun_qwiic_proximity', \
-            'sparkfun_qwiic_scmd', 'sparkfun_qwiic_i2c']
+   setup_requires = ['sparkfun-qwiic-i2c']
+
+   # Use the dir names of the submodules in the ./qwiic/drives directory
+   sub_mods = os.listdir(here+os.sep+'qwiic/drivers')
+   for daDriver in sub_mods:
+      setup_requires.append('sparkfun-%s' % (daDriver.replace('_','-')))
 
     # ...
    )
