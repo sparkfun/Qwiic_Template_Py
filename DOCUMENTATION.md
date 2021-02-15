@@ -18,20 +18,20 @@ Qwiic_Template_Py/
 ```
 
 
-To create a packages documentation, the general development pattern is as follows:
+To create a package's documentation, the general development pattern is as follows:
 * Documentation is added to the python source code using [docstrings](https://www.python.org/dev/peps/pep-0257/)
 * Documentation configuration is define in ```docs/conf.py```
-* Package depenancies are added to ```docs/requirements.txt```
-* The file ```index.rst``` is updated for the desired documentation structure. Addtional ```.rst``` files are added as needed.
+* Package dependencies are added to ```docs/requirements.txt```
+* The file ```index.rst``` is updated for the desired documentation structure. Additional ```.rst``` files are added as needed.
 * Documentation is generated locally using Sphinx for testing
 * Validated documentation files are checked into the GitHub repository.
 * The GitHub repository is imported and linked to a project in ReadTheDocs.org
-* ReadThe docs generates and publishes the documentation.
+* ReadTheDocs generates and publishes the documentation.
     * The documentation is updated automatically when the project is updated on GitHub
     
 ___Python Docstrings___
 
-Python has a built-in language feature used to embedd documentation strings in code, a feature called _docstrings_.
+Python has a built-in language feature used to embed documentation strings in code, a feature called _docstrings_.
 
 From the docstring spec (PEP-0257):
 > A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the \__doc__ special attribute of that object.
@@ -94,7 +94,7 @@ import math
 import qwiic_i2c
 ```
 
-The Sphinx documentation package uses the values of the ```__doc___``` attribute of objects to locate and generate documentation. As such, the Sphinx system (either run locally or by ReadTheDocs.org) will instatiate the package as part of the documentation generation process. As such, the depenancies and needs of the package must be defined in the documentation configuration files.
+The Sphinx documentation package uses the values of the ```__doc___``` attribute of objects to locate and generate documentation. As such, the Sphinx system (either run locally or by ReadTheDocs.org) will instantiate the package as part of the documentation generation process. As such, the dependencies and needs of the package must be defined in the documentation configuration files.
 
 ___docs/conf.py___
 
@@ -111,7 +111,7 @@ author = 'SparkFun Electronics'
 
 *Project Extensions*
 
-This is an array that contains the names of extensions to the Sphinx system to geneate the documentation. These are python packages that should be installed on your system (for local documentation builds). For the qwiic python packages, the following statement is used:
+This is an array that contains the names of extensions to the Sphinx system to generate the documentation. These are python packages that should be installed on your system (for local documentation builds). For the qwiic python packages, the following statement is used:
 ```python
 extensions = [ 
 	'sphinx.ext.autodoc',
@@ -239,7 +239,7 @@ API Reference
 ```
 This specifies that Sphinx should inspect the qwiic_bme280 module, and document the package members. 
 
-Got python packages, such as the ```qwiic_mico_oled``` package, the documentation is contained in module and underlying class, so the rst file file takes a slightly different format:
+Got python packages, such as the ```qwiic_mico_oled``` package, the documentation is contained in module and underlying class, so the rst file takes a slightly different format:
 ```rst
 API Reference
 ==============
@@ -256,9 +256,9 @@ The Sphinx autodoc feature is extemely useful, and fully documented by the [Sphi
 
 ___Documenting Examples___
 
-Any examples for a package are also included in the documentation. These are defined in individiual rst files, which do nothing more that include the source of the example. 
+Any examples for a package are also included in the documentation. These are defined in individual rst files, which do nothing more than include the source of the example. 
 
-The following shows the format of an an example rst file, which does nothing more that inline a file, add the filename as the caption of the inline, and formats the included file with line numbers. 
+The following shows the format of an an example rst file, which does nothing more than inline a file, add the filename as the caption of the inline, and formats the included file with line numbers. 
 ```rst
 Basic Operation
 ---------------------------
@@ -321,7 +321,7 @@ The output of this process is placed in the directory ```docs/_build/html```. Th
 Publishing to ReadTheDocs.org
 -------------------------------
 
-To publish the documentation on ReadTheDocs.org, you'll need an account. Once the account is created, it needs to be linked/connected to the your SFE GitHub account. This is a standard oAuth2 connection process, which is initited in the the Account -> Settings -> Connected Services section of readthedocs.org.
+To publish the documentation on ReadTheDocs.org, you'll need an account. Once the account is created, it needs to be linked/connected to the your SFE GitHub account. This is a standard oAuth2 connection process, which is initiated in the the Account -> Settings -> Connected Services section of readthedocs.org.
 
 To import a project the following steps are taken:
 * First ensure the project contents are checked into GitHub and that the repository is public.
@@ -332,8 +332,8 @@ To import a project the following steps are taken:
 * Once imported, ReadTheDocs will being the build process for the documentation. The progress of this is followed by selecting the project on the [My Projects](https://readthedocs.org/dashboard/) page, and selected the project and once in the project, selecting the "Builds" button.
 * If the builds is successful, a link to the new documentation is made available. 
 
-If a documentation build fails, the best method to debug is to dig into the specific build (The Project -> Builds) and review the build log. If more detail is needed, the __View raw__ link on the build page will dispaly the raw log file from the build run. 
+If a documentation build fails, the best method to debug is to dig into the specific build (The Project -> Builds) and review the build log. If more detail is needed, the __View raw__ link on the build page will display the raw logfile from the build run. 
 
 #### Documentation Update
 
-The update process for the documentation is automatic. Whenever the projects master branch on GitHub is updated, ReadTheDocs will initiate a documentation build using the new package content.
+The update process for the documentation is automatic. Whenever the project's master branch on GitHub is updated, ReadTheDocs will initiate a documentation build using the new package content.

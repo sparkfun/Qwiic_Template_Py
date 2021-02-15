@@ -40,7 +40,7 @@ Qwiic_Template_Py/
    +--- setup.cfg         - Configuration details used when building the installer package.
    +--- setup.py          - The python script used to define and build the python installer package.
    |
-   +--- qwiic_<mod>.py.   - If a module (single file implemntation), the implementation source code file.
+   +--- qwiic_<mod>.py.   - If a module (single file implementation), the implementation source code file.
    |
    or
    |
@@ -56,7 +56,7 @@ To keep the implementation simple and minimize resource needs, there are few des
 The specific implementation requirements are as follows
 
 ### Device Class
-Each developmend driver package implements a class that encapsulates all interactions with this device. 
+Each development driver package implements a class that encapsulates all interactions with this device. 
 
 #### Class Name
 The class name should be a **CamelCase** version of the package name. This naming schema is used by future automation functionality and follows common python methodologies
@@ -90,7 +90,7 @@ These variables are:
 
 | Class Variable Name| Description|
 |----|----|
-|**device_name**      |      - Set to the human readable name of the device|
+|**device_name**      |      - Set to the human-readable name of the device|
 |**available_addresses**|   - Set to an array of the I2C addresses this device supports. The first address is the default|
 
 These values are set outside of any class method, by convention they are placed right after the class declaration statement. 
@@ -144,7 +144,7 @@ def __init__(self, address=None, i2c_driver=None):
 		else:
 			self._i2c = i2c_driver
 ```
-Note - the docstring for the constructor is actuall the docstring for the class.
+Note - the docstring for the constructor is actually the docstring for the class.
 
 ### Interface Conventions
 While not strictly required, the following conventions and patterns are used for qwiic driver implementations
@@ -161,7 +161,7 @@ This is a standard method, that often uses the following implementation pattern.
 ```python
 def is_connected(self):
 		""" 
-			Determine if a SCMD device is conntected to the system..
+			Determine if a SCMD device is connected to the system.
 
 			:return: True if the device is connected, otherwise False.
 			:rtype: bool
@@ -176,15 +176,15 @@ connected = property(is_connected)
 Additionally, the method is exposed as a read-only attribute on the object. 
 
 #### A begin() Method
-Following the pattern set by the Qwiic Arduino libraries, a begin() method is used to perform the actual initializtion of the underlying I2C device. 
+Following the pattern set by the Qwiic Arduino libraries, a begin() method is used to perform the actual initialization of the underlying I2C device. 
 
-While each device implements device specific initiatialization logic, the signature of this method is as follows:
+While each device implements device specific initialization logic, the signature of this method is as follows:
 ```python
 def begin(self):
 		""" 
 			Initialize the operation of the SCMD module
 
-			:return: Returns true of the initializtion was successful, otherwise False.
+			:return: Returns true of the initialization was successful, otherwise False.
 			:rtype: bool
 
 		"""
@@ -195,7 +195,7 @@ Implementation Structure
 -------------------------
 There are two patterns of implementation for a package - a python module or a python package. 
 
-To the end user a package or module looks the same, but the implementation within the repository is different. 
+To the end-user a package or module looks the same, but the implementation within the repository is different. 
 
 ### Module
 A python module is nothing more than a single file that makes up the overall implementaiton for the package. 
@@ -214,9 +214,9 @@ Qwiic_Module_Py/
 ### Package
 A python package is a folder that contains the implementation of the package. The folder can contain python source files, as well as any other resource needed for the property operation of the package.
 
-The pacakge directory is name is the name of the package. A file named ```__init__.py``` in the root directory of the package defines it's entry/operation and let's python know that the directory implements a package.
+The package directory is name is the name of the package. A file named ```__init__.py``` in the root directory of the package defines its entry/operation and lets python know that the directory implements a package.
 
-For example, if the user imports a pacakge named qwiic_package
+For example, if the user imports a package named qwiic_package
 ```python
 import qwiic_package
 ```
@@ -276,7 +276,7 @@ The Qwiic Python components are packaged using standard python package/install t
 Within the repository, the files that makeup the package are the following:
 ```
 Qwiic_Example_Py
-   + DESCRIPTION.rst          - A highlevel description of the package
+   + DESCRIPTION.rst          - A high level description of the package
    |
    + setup.cfg                - Specific options/settings for the package tools 
    |
@@ -293,9 +293,9 @@ _(\***Note:** The title should read **SparkFun Qwiic** <Package Name> and the nu
 The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
 
 ### setup.py
-The file ```setup.py``` is a python script that is used to describe the package and build an install package. The file is used by the python package ```setuptools```, which is a collection of untilities that make it simple to build and distribute Python distributions. 
+The file ```setup.py``` is a python script that is used to describe the package and build an install package. The file is used by the python package ```setuptools```, which is a collection of utilities that make it simple to build and distribute Python distributions. 
 
-This template repository contains an example ```setup.py``` file for review and an overview of the file contents are below. For details on the strucutre of the file, please review the [setup.py section](https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py) in the Packaging Python Projects document. 
+This template repository contains an example ```setup.py``` file for review and an overview of the file contents are below. For details on the structure of the file, please review the [setup.py section](https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py) in the Packaging Python Projects document. 
 
 ___Description Section___
 
@@ -309,7 +309,7 @@ here = path.abspath(path.dirname(__file__))
 with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
     long_description = f.read()
 ```
-This reads the contents of the description fine and places the resultant string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the *```long_description```* keyword parameter.
+This reads the contents of the description fine and places the resulting string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the *```long_description```* keyword parameter.
 
 Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
 
@@ -420,9 +420,9 @@ ___setuptools.setup(package_data={})___
 
 The packaging system will include python files (```.py```) files by default. If the package includes non-python files, these are specified via the ```pacakge_data``` keyword argument, which takes a dictionary. 
 
-The provided dictionary key values are a specific location, and the value is the data files to include in the package. The data filenames can be specific names, or incldue wildcards. 
+The provided dictionary key values are a specific location, and the value is the data files to include in the package. The data filenames can be specific names, or include wildcards. 
 
-An example of this is used in the qwiic_micro_oled package, which includes font data files, named using a ```.bin``` file extension. These data files are located in the ```./fonts``` subdirectory of the pacakge repository.
+An example of this is used in the qwiic_micro_oled package, which includes font data files, named using a ```.bin``` file extension. These data files are located in the ```./fonts``` subdirectory of the package repository.
 ```python
 setuptools.setup(
      # ...
@@ -435,7 +435,7 @@ setuptools.setup(
 ```
 ___setuptools.setup(py_modules=[])___
 
-If the install package implements a modudule (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.
+If the install package implements a module (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.
 
 For the Qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
 ```python
@@ -454,11 +454,11 @@ When ready to build and upload a package to pypi.org, the following setups are p
 #### Get an Account on PyPi.org
 You'll need an account on PyPi.org - it's a simple sign up procedure.
 
-To publish a new package, you can use this account. If you are updating or modifiying an existing package, you'll need to be added as a *Maintainer* of the package by the package owner.
+To publish a new package, you can use this account. If you are updating or modifying an existing package, you'll need to be added as a *Maintainer* of the package by the package owner.
 
 #### Build the Package distributions
 
-To build and uplaod the packages, make sure the required python packages are installed - **setuptools**, **twine**, and **wheel**. 
+To build and upload the packages, make sure the required python packages are installed - **setuptools**, **twine**, and **wheel**. 
 ```sh
 sudo pip install setuptools twine wheel
 ```
