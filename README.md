@@ -287,6 +287,8 @@ Qwiic_Example_Py
 #### DESCRIPTION.rst
 The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level description of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
 
+_(\***Note:** The title should read **SparkFun Qwiic** <Package Name> and the number of `=` must be greater than the character length of the title.)_
+
 #### setup.cfg
 The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
 
