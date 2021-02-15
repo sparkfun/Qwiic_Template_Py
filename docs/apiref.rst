@@ -1,5 +1,5 @@
 API Reference
 ==============
 
-.. automodule:: qwiic_template
+.. automodule:: qwiic_<template>
    :members:

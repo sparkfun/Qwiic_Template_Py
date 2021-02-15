@@ -289,6 +289,11 @@ The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/ma
 
 _(\***Note:** The title should read **SparkFun Qwiic** <Package Name> and the number of `=` must be greater than the character length of the title.)_
 
+```
+SparkFun Qwiic <Example Package Title>
+=============================================
+```
+
 #### setup.cfg
 The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
 

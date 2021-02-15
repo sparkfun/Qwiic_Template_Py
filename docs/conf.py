@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'sparkfun_template_py'
+project = 'sparkfun_<template>_py'
 copyright = '2019, SparkFun Electronics'
 author = 'SparkFun Electronics'
 
