@@ -117,10 +117,10 @@ extensions = [
 	'sphinx.ext.autodoc',
 	'sphinx.ext.intersphinx',
 	'sphinx.ext.viewcode',
-	'm2r'
+	'm2r2'
 	]
 ```
-The unique package here is ```m2r```, which converts markdown into reStructured text. This allows the documentation system to import the GitHub README.md files into the generated documentation page.
+The unique package here is ```m2r2```, which converts markdown into reStructured text. This allows the documentation system to import the GitHub README.md files into the generated documentation page.
 
 *master_doc*
 
@@ -288,7 +288,7 @@ The ```docs/requirements.txt``` file contains the modules this package needs to 
 
 For most qwiic driver packages, this file contains the following:
 ```txt
-m2r
+m2r2
 sparkfun-qwiic-i2c
 ```
 The contents specifically being:
@@ -301,10 +301,10 @@ _______________________________
 
 Sphinx is used to test the documentation before uploading the contents to ReadTheDocs.org. To build locally, execute the following steps:
 
-Insure the needed packages are installed, which are Sphinx, the sphinx read the docs theme and the markdown to reStructure Text conversion package m2r.
+Insure the needed packages are installed, which are Sphinx, the sphinx read the docs theme and the markdown to reStructure Text conversion package m2r2.
 
 ```sh
-sudo pip install Sphinx sphinx_rtd_theme m2r
+sudo pip install Sphinx sphinx_rtd_theme m2r2
 ```
 Additionally, the package being documented should be installed locally. Normally this is just done by running the following command in the root of the package directory. 
 ```sh
