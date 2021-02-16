@@ -1,4 +1,4 @@
-SparkFun Qwiic <Package Title>
+Qwiic <Example Package Title>
 =============================================
 
 This is a short description of this package.
