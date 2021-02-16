@@ -285,9 +285,7 @@ Qwiic_Example_Py
 ```
 
 #### DESCRIPTION.rst
-The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level description of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package.
-
-_(\***Note:** The title should read **Qwiic** <Package Name> and the number of `=` must be greater than the character length of the title.)_
+The file [DESCRIPTION.rst](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/DESCRIPTION.rst) is a RST ([reStructured Text](https://gist.github.com/dupuy/1855764)) file that has a simple, high-level description of the package. When setup.py is executed, it reads the contents of this file and sets it as the description of the package. _(\***Note:** The title should read **Qwiic** <Package Name> and the number of `=` must be greater than the character length of the title.)_
 
 ```
 Qwiic <Example Package Title>
@@ -320,7 +318,7 @@ Note: The ```io.open``` method is used to support *uft-8* file encoding in Pytho
 
 ___setuptools.setup( name=)___
 
-This keyword is set to the name to publish the package under in PyPi.org and the name passed to the ```pip``` command for installing the package. _(*The package name should be in the form of **`sparkfun_qwiic_`**`<package_name>`.)_
+This keyword is set to the name to publish the package under in PyPi.org and the name passed to the ```pip``` command for installing the package. _(\***Note:** The package name should be in the form of `sparkfun_qwiic_<package_name>`.)_
 
 The following command shows this value for the qwiic bme280:
 ```python
@@ -443,7 +441,7 @@ setuptools.setup(
 ```
 ___setuptools.setup(py_modules=[])___
 
-If the install package implements a module (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.  _(*The module name should be in the form of **`"qwiic_`**`<package_name>"`.)_
+If the install package implements a module (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.  _(\***Note:** The module name should be in the form of `"qwiic_<package_name>"`.)_
 
 For the Qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
 ```python
