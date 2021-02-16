@@ -331,6 +331,35 @@ setuptools.setup(
 
 **NOTE:** For PyPi/Pip, underscores ```_``` and dashes ```-``` are interchangeable. 
 
+___setuptools.setup( version=)___
+
+This controls the package's release version on PyPI. _(\***Note:** Start off with the lowest release value until the package is finalized; then, the version can get "bumped up" to `1.0.0`. When uploading a package to PyPI, the version number needs to be "bumped up" for any package changes to take into effect.)_
+
+```python
+setuptools.setup(
+   # ...
+   # Versions should comply with PEP440.  For a discussion on single-sourcing
+   # the version across setup.py and the project code, see
+   # http://packaging.python.org/en/latest/tutorial.html#version
+   version='0.0.1',
+   #...
+```
+
+___setuptools.setup( description= and url=)___
+
+Modify the description with the package's name and include the url for the associated product page.
+
+```python
+setuptools.setup(
+   # ...
+    description='SparkFun Electronics qwiic <package_name> package',
+    long_description=long_description,
+
+    # The project's main homepage.
+    url='https://www.sparkfun.com/products/<Product Number>',
+   #...
+```
+
 ___setuptools.setup( install_requires=)___
 
 The *```install_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
@@ -526,7 +555,7 @@ To add a driver/package to the Qwiic repository, do the following steps:
 Example for the Titan GPS driver
 ``` git submodule add git@github.com:sparkfun/Qwiic_Titan_Gps_Py.git qwiic_titan_gps ```
 
-_Note, if you get a failure due to permissions, you may need to use the complete URL for the \<repo to add\>._
+_Note, if you get a failure due to permissions, you may need to use the complete URL for the \<repo to add\>. (\***Note:** Don't forget to include the submodule name (`qwiic_<package_name>`) after the link for the repo.)_
 
 Example for the Titan GPS driver (with full URL)
 ``` git submodule add https://github.com/sparkfun/Qwiic_Titan_Gps_Py qwiic_titan_gps ```
