@@ -102,7 +102,7 @@ The ````docs/conf.py``` file sets the configuration Sphinx will use when buildin
 
 *Project Information*
 
-These are variables that describe the project. The key value being the name of the project.
+These are variables that describe the project. The key value being the name of the project, which should be in the form of **`'sparkfun_qwiic_`**`<package_name>'`. _(*Don't forget to update the copyright year.)_
 ```python
 project = 'sparkfun_qwiic_bme280'
 copyright = '2019, SparkFun Electronics'
@@ -215,7 +215,7 @@ For the package API:
 ```
 This section links to the file ```apiref.rst```
 
-And the examples section, which links to three example rst files: ```ex1.rst, ex4.rst, ex5.rst```
+And the examples section, which links to three example rst files: ```ex1.rst, ex4.rst, ex5.rst``` _(*The file names (i.e. `ex3.rst`) should match the link names (i.e. `ex3`).)_
 ```rst
 .. toctree:: 
    :caption: Examples
@@ -225,9 +225,20 @@ And the examples section, which links to three example rst files: ```ex1.rst, ex
    ex5
 ```
 
+In the other links section, update the product name and the links to the product page and package's GitHub repo.
+```rst
+.. toctree::
+   :caption: Other Links
+
+	SparkFun <https://sparkfun.com>
+   SparkFun Environmental Combo Breakout CCS811/BME280 <https://www.sparkfun.com/products/14348>
+	GitHub <https://github.com/sparkfun/Qwiic_BME280_Py>
+	SparkFun qwiic <https://www.sparkfun.com/qwiic>
+```
+
 *API Documentation*
 
-To document the projects API, the *autodoc* system of Sphinx is used. This system will crawl the specified files/packages and generate documention using the included *docstrings*. 
+To document the projects API, the *autodoc* system of Sphinx is used. This system will crawl the specified files/packages and generate documention using the included *docstrings*. _(*The automodule should take the form of **`qwiic_`**`<package_name>`. For packages with underlying classes, see the `qwiic_mico_oled` example below.)_
 
 For a moduled, like ```qwiic_bme280```, the contents of ```apiref.rst``` is:
 ```rst
@@ -258,7 +269,7 @@ ___Documenting Examples___
 
 Any examples for a package are also included in the documentation. These are defined in individual rst files, which do nothing more than include the source of the example. 
 
-The following shows the format of an an example rst file, which does nothing more than inline a file, add the filename as the caption of the inline, and formats the included file with line numbers. 
+The following shows the format of an an example rst file, which does nothing more than inline a file, add the filename as the caption of the inline, and formats the included file with line numbers. _(*The header/title is what will appear as the example code's title on the ReadtheDocs webpage and display the script from `/examples/qwiic_bme280_ex1.py`.)_
 ```rst
 Basic Operation
 ---------------------------
