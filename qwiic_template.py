@@ -118,7 +118,7 @@ class QwiicTemplate(object): # TODO: replace template
         if not self.is_connected():
             return False
 
-        # TODO: Configure device as needed. Once complete, the device shold be
+        # TODO: Configure device as needed. Once complete, the device should be
         # fully ready to use to make it very simple for the user
 
         # TODO: Return True once successful. Template defaults to False!
