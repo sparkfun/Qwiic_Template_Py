@@ -37,12 +37,11 @@ import qwiic_template # TODO Import correct package
 import sys
 
 def runExample():
-	# TODO Replace tempalte and title
+	# TODO Replace template and title
 	print("\nQwiic Template Example 1 - Title\n")
 
 	# Create instance of device
-	# TODO update as needed
-	myDevice = qwiic_template.QwiicTemplate()
+	myDevice = qwiic_template.QwiicTemplate() # TODO update as needed
 
 	# Check if it's connected
 	if myDevice.is_connected() == False:
