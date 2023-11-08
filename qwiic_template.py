@@ -37,7 +37,7 @@
 qwiic_template TODO: replace template
 ============
 Python module for the [SparkFun Qwiic TODO](https://www.sparkfun.com/products/TODO)
-This is a port of the existing [SparkFun TODO Arduino Library](https://github.com/sparkfun/TODO)
+This is a port of the existing [Arduino Library](https://github.com/sparkfun/TODO)
 This package can be used with the overall [SparkFun Qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
 New to Qwiic? Take a look at the entire [SparkFun Qwiic ecosystem](https://www.sparkfun.com/qwiic).
 """
