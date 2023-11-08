@@ -118,6 +118,9 @@ class QwiicTemplate(object): # TODO: replace template
         if not self.is_connected():
             return False
 
+        # TODO Perform a reset of the device if possible. This reverts all
+        # registers to a known state in case the device was reconfigured before
+
         # TODO: Configure device as needed. Once complete, the device should be
         # fully ready to use to make it very simple for the user
 
