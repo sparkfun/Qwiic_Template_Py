@@ -1,22 +1,18 @@
 #!/usr/bin/env python
-#-----------------------------------------------------------------------------
-# qwiic_env_bme280_ex1.py
+#-------------------------------------------------------------------------------
+# qwiic_template_ex1_title.py TODO: replace template and title
 #
-# Simple Example for the Qwiic BME280 Device
-#------------------------------------------------------------------------
+# TODO: Add description for this example
+#-------------------------------------------------------------------------------
+# Written by SparkFun Electronics, TODO: month and year
 #
-# Written by  SparkFun Electronics, May 2019
-# 
-# This python library supports the SparkFun Electroncis qwiic 
-# qwiic sensor/board ecosystem on a Raspberry Pi (and compatable) single
-# board computers. 
+# This python library supports the SparkFun Electroncis Qwiic ecosystem
 #
-# More information on qwiic is at https://www.sparkfun.com/qwiic
+# More information on Qwiic is at https://www.sparkfun.com/qwiic
 #
 # Do you like this library? Help support SparkFun. Buy a board!
-#
-#==================================================================================
-# Copyright (c) 2019 SparkFun Electronics
+#===============================================================================
+# Copyright (c) 2023 SparkFun Electronics
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy 
 # of this software and associated documentation files (the "Software"), to deal 
@@ -35,44 +31,32 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
-#==================================================================================
-# Example 1
-#
+#===============================================================================
 
-from __future__ import print_function
-import qwiic_bme280
-import time
+import qwiic_template # TODO Import correct package
 import sys
 
 def runExample():
+	# TODO Replace template and title
+	print("\nQwiic Template Example 1 - Title\n")
 
-	print("\nSparkFun BME280 Sensor  Example 1\n")
-	mySensor = qwiic_bme280.QwiicBme280()
+	# Create instance of device
+	myDevice = qwiic_template.QwiicTemplate() # TODO update as needed
 
-	if mySensor.connected == False:
-		print("The Qwiic BME280 device isn't connected to the system. Please check your connection", \
+	# Check if it's connected
+	if myDevice.is_connected() == False:
+		print("The device isn't connected to the system. Please check your connection", \
 			file=sys.stderr)
 		return
 
-	mySensor.begin()
+	# Initialize the device
+	myDevice.begin()
 
-	while True:
-		print("Humidity:\t%.3f" % mySensor.humidity)
-
-		print("Pressure:\t%.3f" % mySensor.pressure)	
-
-		print("Altitude:\t%.3f" % mySensor.altitude_feet)
-
-		print("Temperature:\t%.2f" % mySensor.temperature_fahrenheit)		
-
-		print("")
-		
-		time.sleep(1)
-
+	# TODO Add basic example code
 
 if __name__ == '__main__':
 	try:
 		runExample()
 	except (KeyboardInterrupt, SystemExit) as exErr:
-		print("\nEnding Example 1")
+		print("\nEnding Example")
 		sys.exit(0)
