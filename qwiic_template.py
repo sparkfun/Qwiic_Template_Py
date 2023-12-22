@@ -80,7 +80,10 @@ class QwiicTemplate(object): # TODO: replace template
         """
 
         # Use address if provided, otherwise pick the default
-        self.address = self.available_addresses[0] if address is None else address
+        if address in self.available_addresses:
+            self.address = address
+        else:
+            self.address = self.available_addresses[0]
 
         # Load the I2C driver if one isn't provided
         if i2c_driver is None:
