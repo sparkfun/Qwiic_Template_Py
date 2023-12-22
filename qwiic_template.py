@@ -106,7 +106,7 @@ class QwiicTemplate(object): # TODO: replace template
         # Check if connected by seeing if an ACK is received
         # TODO: If the device has a product ID register, that should be
         # checked in addition to the ACK
-        return qwiic_i2c.isDeviceConnected(self.address)
+        return self._i2c.isDeviceConnected(self.address)
 
     connected = property(is_connected)
 
