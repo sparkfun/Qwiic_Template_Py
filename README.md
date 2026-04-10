@@ -28,17 +28,15 @@ The general structure of a Qwiic Python repository is as follows
 ```
 Qwiic_Template_Py/
    +--- docs/
-   |       `--- ... files to support automatic documentation creation via readthedocs.org
+   |       `--- ... files to support automatic documentation creation via doxygen
    |
    +--- examples/
    |       `--- ... example files for the package
    |
-   +--- .readthedocs.yml  - configuration file for readthedocs
    +--- DESCRIPTION.rst   - Contains the RST formatted description for the package. Used when building the installer package
    +--- LICENSE           - The license for the package. Currently using MIT
    +--- README.md         - The GitHub markdown formatted readme for the package
-   +--- setup.cfg         - Configuration details used when building the installer package.
-   +--- setup.py          - The python script used to define and build the python installer package.
+   +--- pyproject.toml    - Configuration details used when building the installer package.
    |
    +--- qwiic_<mod>.py.   - If a module (single file implementation), the implementation source code file.
    |
@@ -278,9 +276,8 @@ Within the repository, the files that makeup the package are the following:
 Qwiic_Example_Py
    + DESCRIPTION.rst          - A high level description of the package
    |
-   + setup.cfg                - Specific options/settings for the package tools 
-   |
-   + setup.py                 - A python script that defines and builds the installer package
+   + pyproject.toml           - Specific options/settings for the package tools 
+package
 
 ```
 
@@ -292,197 +289,20 @@ Qwiic <Example Package Title>
 =============================================
 ```
 
-#### setup.cfg
-The file [setup.cfg](https://github.com/sparkfun/Qwiic_Template_Py/blob/master/setup.cfg) contains options that the packaging tools use when creating the specific package. For the most part, the file in this template repo can be used. 
+#### pyproject.toml
+The file [pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)  is a configuration file used by packaging tools, as well as other tools such as linters, type checkers, etc.
 
-### setup.py
-The file ```setup.py``` is a python script that is used to describe the package and build an install package. The file is used by the python package ```setuptools```, which is a collection of utilities that make it simple to build and distribute Python distributions. 
-
-This template repository contains an example ```setup.py``` file for review and an overview of the file contents are below. For details on the structure of the file, please review the [setup.py section](https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py) in the Packaging Python Projects document. 
-
-___Description Section___
-
-One of the first sections in ```setup.py``` is reading in the contents of *DESCRIPTION.rst*. 
-```python
-import io
-
-here = path.abspath(path.dirname(__file__))
-
-# get the log description
-with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
-    long_description = f.read()
-```
-This reads the contents of the description fine and places the resulting string into the variable ```long_description```. This variable is passed into the call to ```setup()``` using the *```long_description```* keyword parameter.
-
-Note: The ```io.open``` method is used to support *uft-8* file encoding in Python versions 2.7 and 3.*. 
-
-___setuptools.setup( name=)___
-
-This keyword is set to the name to publish the package under in PyPi.org and the name passed to the ```pip``` command for installing the package. _(\***Note:** The package name should be in the form of `sparkfun_qwiic_<package_name>`.)_
-
-The following command shows this value for the qwiic bme280:
-```python
-setuptools.setup(
-    # ...
-    name='sparkfun_qwiic_bme280',
-    # ...
-   )
-```
-
-**NOTE:** For PyPi/Pip, underscores ```_``` and dashes ```-``` are interchangeable. 
-
-___setuptools.setup( version=)___
-
-This controls the package's release version on PyPI. _(\***Note:** Start off with the lowest release value until the package is finalized; then, the version can get "bumped up" to `1.0.0`. When uploading a package to PyPI, the version number needs to be "bumped up" for any package changes to take into effect.)_
-
-```python
-setuptools.setup(
-   # ...
-   # Versions should comply with PEP440.  For a discussion on single-sourcing
-   # the version across setup.py and the project code, see
-   # http://packaging.python.org/en/latest/tutorial.html#version
-   version='0.0.1',
-   #...
-```
-
-___setuptools.setup( description= and url=)___
-
-Modify the description with the package's name and include the url for the associated product page.
-
-```python
-setuptools.setup(
-   # ...
-    description='SparkFun Electronics qwiic <package_name> package',
-    long_description=long_description,
-
-    # The project's main homepage.
-    url='https://www.sparkfun.com/products/<Product Number>',
-   #...
-```
-
-___setuptools.setup( install_requires=)___
-
-The *```install_requires```* keyword arguement to ```setuptools.setup()``` is used to specify what other python packages this package depends on. 
-
-An example of this is the ```sparkfun-qwiic-i2c``` package, which all Qwiic board python packages use. An example of this from the Qwiic Proximity package ```setup()``` is as follows:
-```python
-setuptools.setup(
-    # ...
-     
-    install_requires=['sparkfun_qwiic_i2c'],
-
-		# ...
-   )
-```
-
-For the overall Qwiic package, which depends on all driver packages, this parameter has the following form:
-```python
-setuptools.setup(
-    # ...
-   setup_requires = ['sparkfun-qwiic-i2c']
-
-   # Use the dir names of the submodules in the ./qwiic/drives directory
-   sub_mods = os.listdir(here+os.sep+'qwiic/drivers')
-   for daDriver in sub_mods:
-      setup_requires.append('sparkfun-%s' % (daDriver.replace('_','-')))
-
-    # ...
-   )
-```
-
-___setuptools.setup(classifiers=[])___
-
-The classifiers argument to ```setup()``` are attrbitues that describe the package and are used details specifics to the PyPi respository and users of the project. While a [detailed list of of valid classifier values](https://pypi.org/pypi?%3Aaction=list_classifiers) is available at pypy.org, the key values are the project maturity (is it Alpha, Beta, Production?) and what python versions are supported. 
-
-The example script has the following classifiers:
-```python
-setuptools.setup(
-    # ...
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
-    classifiers=[
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
-        'Development Status :: 5 - Production/Stable',
-
-        # Indicate who your project is intended for
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
-
-        # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: MIT License',
-
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both. 
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-   
-    ],
-    # ...
-   )
-```
-
-You can see these detailed out on the SparkFun Qwiic package (sparkfun-qwiic) on the [PyPi.org repository.](https://pypi.org/project/sparkfun-qwiic/)
-
-___setuptools.setup(packages=[])___
-
-If your repository defines one or more packages (directories), the names of these packages are provided to the ```packages``` keyboard argument to setuptools. Note: this is the directory/package name the user references in python code, not the package name used by PyPi - which can also contain additional keywords. 
-
-For the Qwiic package, this is just the Qwiic directory:
-```python
-setuptools.setup(
-     # ...
-     
-    packages=['qwiic'],
-
-   # ...
-   )
-```
-or for the qwiic_micro_oled package, which includes a font subpackage:
-```python
-setuptools.setup(
-     # ...
-     
-    packages=["qwiic_micro_oled", "qwiic_micro_oled/fonts"],
-
-   # ...
-   )
-```
-___setuptools.setup(package_data={})___
-
-The packaging system will include python files (```.py```) files by default. If the package includes non-python files, these are specified via the ```pacakge_data``` keyword argument, which takes a dictionary. 
-
-The provided dictionary key values are a specific location, and the value is the data files to include in the package. The data filenames can be specific names, or include wildcards. 
-
-An example of this is used in the qwiic_micro_oled package, which includes font data files, named using a ```.bin``` file extension. These data files are located in the ```./fonts``` subdirectory of the package repository.
-```python
-setuptools.setup(
-     # ...
-     package_data={
-         "qwiic_micro_oled/fonts" : ['*.bin']
-    },
-
-   # ...
-   )
-```
-___setuptools.setup(py_modules=[])___
-
-If the install package implements a module (source file) and not a python package (directory), the modules are specific to the ```setup()``` method call using the ```py_modules=[]``` keyword argument. The value of this keyword is an array that contains the names of the modules to include in the package. Note, the file suffix is not included in the provided names.  _(\***Note:** The module name should be in the form of `"qwiic_<package_name>"`.)_
-
-For the Qwiic BME280 package, which is implemented in a single file, the module is specified as follows:
-```python
-setuptools.setup(
-   # ...
-    py_modules=["qwiic_bme280"],
-   # ...
-   )
-```
+This template repository contains an example ```pyproject.toml``` file for review.
 
 Building and Uploading the Package
 ----------------------------------
+SparkFun Qwiic Python Libraries are packaged in three ways: 
+
+1) `PyPi` packaging on pypi.org. This packaging supports native python usage i.e. on RaspberryPi or NVIDIA Jetson platforms. 
+2) `Mip` packaging. This packaging supports MicroPython.
+3) `Circup` packaging. This packaging supports CircuitPython. 
+
+### PyPi Packaging Instructions
 
 When ready to build and upload a package to pypi.org, the following setups are performed.
 
@@ -500,12 +320,9 @@ sudo pip install setuptools twine wheel
 
 Build the distribution packages using the following commands (executing in the package root directory). First create a standard distribution:
 ```sh
-python setup.py sdist 
+py -m build
 ```
-Then a distribution in the ```wheel``` format.
-```sh
-python setup.py bdist_wheel --universal
-```
+
 These commands will create distribution package files and place them in the ```./dist``` subdirectory. 
 
 ### Upload the Package to PyPi.org
@@ -513,7 +330,7 @@ These commands will create distribution package files and place them in the ```.
 The ```twine``` command is used to upload the install packages to pypi.org. To upload the packages, use the following command:
 
 ```sh
-twine upload dist/*
+py -m twine upload dist/*
 ```
 This command will prompt for the *username* and *password* for the pypi account to use for the upload.
 
@@ -526,17 +343,40 @@ NOTE: Your PyPi.org username and password can be specified in the file ```~/.pyp
 username = <the username>
 password = <the password>
 ```
-Documentation Generation - ReadTheDocs.org
+
+You can alternatively use an API key instead of a username and password.
+
+### Mip Packaging Instructions
+Mip packaging utilizes the package.json structure as seen in `package.json` in this repository. Upate the `"urls"` entry with your `.py` implementation file and your repository name. Update the `"deps"` entry with any dependencies that your library relies on. The SparkFun convention is to also include a branch called "examples" in each Qwiic Python repository that is exactly the same as the main/master branch, but with a different package.json. The package.json in the example branch should contain the paths to all examples in the `"urls"` entry. This will allow users to install the main package on a MicroPython board with: 
+
+`mpremote mip install github:sparkfun/qwiic_your_package_py`
+
+And will allow users to install the examples package with:
+
+`mpremote mip install --target "" github:sparkfun/qwiic_your_package_py@examples`
+
+Just by nature of having the package.json checked into the repo (and having your repo public), it is installable with mip, no other packaging or publishing is required. 
+
+### Circup Packaging Instructions
+
+For packaging with circup, first create a tagged release of your repository. Then, add your repository as a submodule to the [Qwiic_Py repository](https://github.com/sparkfun/Qwiic_Py) as described below in the [Adding the Module to Qwiic Py](#adding-the-module-to-qwiic_py) section below. Next, run the [update-submodules.sh](https://github.com/sparkfun/Qwiic_Py/blob/main/update-submodules.sh) script in the Qwiic_Py repository. This will pull the latest releases from all of the libraries in Qwiic Py. Then, add and commit any updates after `update-submodules.sh` is run. Finally, create a new release in Qwiic_Py. Name the release "Month Year Release" and name the tag for the release "YYYYMMDD". For example a release on February 27, 2026 would be named `February 2026 Release` and have the tag `20260227`. When your release is published, the [build.yml](https://github.com/sparkfun/Qwiic_Py/blob/main/.github/workflows/build.yml) and [release.yml](https://github.com/sparkfun/Qwiic_Py/blob/main/.github/workflows/release.yml) workflows will run and your package will be published for Circup! To intall your package with circup, run the following on a CircuitPython board: 
+
+```
+circup bundle-add sparkfun/Qwiic_Py
+circup install --py qwiic_ens160
+```
+
+Documentation Generation - Doxygen
 ------------------------------------------
 
-Details of the documentation generation process are contained in the file [DOCUMENTATION.md](DOCUMENTATION.md)
+See the `docs/doxygen` directory for the doxygen files used in the auto-generation of doxygen docs. See the `.github/workflows` directory for the workflows that will utilize these doxygen files to generate github pages documentation. The key files that you must edit when creating a new library are `docs/doxygen/doxygen-custom/header.html` and `docs/doxygen/doxygen-config`. Within these files, simply search (ctrl+F) for the `TODO` (and `todo`) and replace each `TODO` with your correct module name instead of `TODO` i.e. `ENS160`. 
 
-Adding the Module dependency  to the main Qwiic package, Qwiic_Py
+To accurately generate the doxygen documentation, your implementation file requires doxygen-style comments. See the `qwiic_template.py` file for an example. 
+
+Adding the Module to Qwiic_Py
 ------------------------------------------------------------------
 
-Adding the Module dependency  to the main Qwiic package, Qwiic_Py 
-
-The overall Qwiic package, which is hosted in the Qwiic_Py repository, defines dependencies to all the SparkFun  Qwiic python packages. This is accomplished by adding modules to the repo as git submodules. 
+The overall Qwiic package, which is hosted in the Qwiic_Py repository, defines dependencies to all the SparkFun Qwiic python packages. This is accomplished by adding modules to the repo as git submodules. 
 
 New drivers are added as git submodules in the Qwiic_Py/qwiic/drivers directory. 
 
@@ -560,12 +400,15 @@ _Note, if you get a failure due to permissions, you may need to use the complete
 Example for the Titan GPS driver (with full URL)
 ``` git submodule add https://github.com/sparkfun/Qwiic_Titan_Gps_Py qwiic_titan_gps ```
 
-
 * Add this new folder to the repo, commit it and push to GitHub 
 
 Once completed, the Qwiic_Py package must be updated and uploaded to PyPi. 
 
-* Bump up the version in the setup.py file. This step defines package dependencies for everything contained in the drivers subfolder, including the newly added submodule. 
+* Bump up the version in the pyproject.toml file. This step defines package dependencies for everything contained in the drivers subfolder, including the newly added submodule. 
 * Follow the above package build and upload steps
 
 Once completed, an update/install of the sparkfun-qwiic package will include the new submodule
+
+README_Template.py
+------------------------------------------------------------------
+Delete the README.md file that you are reading right now, and replace it with the README_Template.md file in this repository (you should rename README_Template.py to README.md). Replace the `TODO`'s in that template README with the proper device name, capabilities or code. Also, update examples/README.md with necessary documentation for each example with links to the doxygen for functions showcased. 
