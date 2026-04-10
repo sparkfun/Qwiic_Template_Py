@@ -373,6 +373,11 @@ See the `docs/doxygen` directory for the doxygen files used in the auto-generati
 
 To accurately generate the doxygen documentation, your implementation file requires doxygen-style comments. See the `qwiic_template.py` file for an example. 
 
+NOTE: In your GitHub Repo you must also:
+1) Navigate to `Settings > Actions > General > Actions Permissions` and check the radio button for `Allow all actions and reusable workflows`
+2) Navigate to `Settings > Pages > Build and deployment` and select the `source` as `GitHub Actions`.
+3) Navigate to `Settings > Environments > github-pages > Deployment branches and tags` and make sure the branch you wish to deploy doxygen from is included in the list of allowed branches.
+
 Adding the Module to Qwiic_Py
 ------------------------------------------------------------------
 
