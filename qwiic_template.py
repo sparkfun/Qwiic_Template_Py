@@ -33,7 +33,7 @@
 # SOFTWARE.
 #===============================================================================
 
-"""
+"""!
 qwiic_template TODO: replace template
 ============
 Python module for the [SparkFun Qwiic TODO](https://www.sparkfun.com/products/TODO)
@@ -68,15 +68,13 @@ class QwiicTemplate(object): # TODO: replace template
     # TODO: Define constants here
 
     def __init__(self, address=None, i2c_driver=None):
-        """
+        """!
         Constructor
 
-        :param address: The I2C address to use for the device
+        @param int, optional address: The I2C address to use for the device
             If not provided, the default address is used
-        :type address: int, optional
-        :param i2c_driver: An existing i2c driver object
+        @param I2CDriver, optional i2c_driver: An existing i2c driver object
             If not provided, a driver object is created
-        :type i2c_driver: I2CDriver, optional
         """
 
         # Use address if provided, otherwise pick the default
@@ -97,11 +95,10 @@ class QwiicTemplate(object): # TODO: replace template
         # TODO: Initialize any variables used by this driver
 
     def is_connected(self):
-        """
+        """!
         Determines if this device is connected
 
-        :return: `True` if connected, otherwise `False`
-        :rtype: bool
+        @return **bool** `True` if connected, otherwise `False`
         """
         # Check if connected by seeing if an ACK is received
         # TODO: If the device has a product ID register, that should be
@@ -111,11 +108,10 @@ class QwiicTemplate(object): # TODO: replace template
     connected = property(is_connected)
 
     def begin(self):
-        """
+        """!
         Initializes this device with default parameters
 
-        :return: Returns `True` if successful, otherwise `False`
-        :rtype: bool
+        @return **bool** Returns `True` if successful, otherwise `False`
         """
         # Confirm device is connected before doing anything
         if not self.is_connected():
